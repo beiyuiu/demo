@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+ <script src="common.js"></script>
+ <script>
+	function getv(){
+		var elem=$("d1").value;
+		console.log(elem);
+		$("d2").innerHTML="<h1>"+elem+"</h1>";
+	}
+  </script>
+	<input type="text" id="d1">
+	<div id="d2">sggha</div>
+	<button onclick="getv()">赋值</button>
+ </body>
+</html>

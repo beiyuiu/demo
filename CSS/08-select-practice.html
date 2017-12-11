@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	#s1{color:orange;}/*100*/
+	#d1 span{color:yellow;}/*101*/
+	.pp span{color:purple;}/*11*/
+	#p1 span{color:blue;}/*101*/
+	#p1 #s1{color:pink;}/*200*//*pink——元素选择器(权值1)<类选择器=伪类选择器(10)<ID选择器(100)<内联样式(1000)*/
+	#d1 p.pp span{color:red;}/*112*/
+	#d2{color:red;}
+	span{color:orange;}
+	#d1{
+		width:500px;
+		background-color:red;
+	}
+  </style>
+ </head>
+ <body>
+	<div id="d2">
+		<span>nghghbfhgh</span>
+	</div>
+	<div id="d1">
+		<p id="p1" class="pp">
+			<span id="s1">gsdhafmsdhfgs</span>
+		</p>
+	</div>  
+ </body>
+</html>

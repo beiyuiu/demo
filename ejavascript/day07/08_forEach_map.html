@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+    if(!("forEach" in Array.prototype))
+      Array.prototype.forEach=function(callback){
+        for(var i=0;i<this.length;i++){
+			if(arr[i]!=undefined)
+				callback(arr[i],i,arr);
+		}
+      }
+
+    if(!("map" in Array.prototype))
+      Array.prototype.map=function(callback){
+        var result=[];
+		for(var i=0;i<this.length;i++){
+			if(arr[i]!=undefined)
+				result[i]=callback(arr[i],i,arr);
+		}
+		return result;
+     }
+
+    var arr=[1,,3,4,5];
+    //将原数组中每个数*2
+    arr.forEach(function(elem,i,arr){
+		arr[i]=elem*2;
+    });
+    //将原数组中每个值*2后放入新数组
+   var evens=arr.map(function(elem){
+     return elem*2;
+    });
+    document.write(arr+"<br>");
+    document.write(evens+"<br>");
+  </script>
+ </body>
+</html>

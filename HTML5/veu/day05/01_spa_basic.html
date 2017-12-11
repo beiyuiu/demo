@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <router-view></router-view>
+</div>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+    /**
+     *创建多个组件
+     * 配置路由词典；path为空表示网页打开时默认加载的组件
+     * 创建路由对象
+     * 创建Vue对象，指定路由对象
+     */
+    var testLogin = Vue.component("login",{
+        template:`
+            <div>
+                <h1>登录页</h1>
+            </div>
+        `
+    });
+    var testRegister = Vue.component("register",{
+        template:`
+            <div>
+                <h1>注册页</h1>
+            </div>
+        `
+    });
+    const myRoutes = [
+        {path:"",component:testLogin},
+        {path:"/login",component:testLogin},
+        {path:"/register",component:testRegister}
+    ];
+    const myRouter = new VueRouter({
+        routes:myRoutes
+    });
+    new Vue({
+        router:myRouter,
+        el:"#app"
+    });
+</script>
+</body>
+</html>

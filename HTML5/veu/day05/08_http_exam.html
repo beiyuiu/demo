@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <p>{{msg}}</p>
+    <ul>
+        <li v-for="item in list">{{item.name}}</li>
+    </ul>
+</div>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-resource.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            msg:"hello sir",
+            list:[],
+        },
+       mounted:function(){
+           /**
+            *发送ajax  get请求
+            */
+           var url = "http://127.0.0.1/1.php";
+           this.$http.get(url).then(function(data){
+               console.log(data.body);
+               this.list=data.body;
+           });
+       }
+    });
+</script>
+</body>
+</html>

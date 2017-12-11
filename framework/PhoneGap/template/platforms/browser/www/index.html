@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Hello World</title>
+</head>
+
+<body>
+    <div class="app">
+        <!--<button onclick="writeTh()">写</button>-->
+        
+        <img id='myImage'/>
+        <br/>
+        <button onclick="showPic()">展示图片</button>
+        <button onclick="startVibrate()">震动</button>
+        <button onclick="startBeep()">声音</button>
+        <button onclick="showAlert()">弹窗</button>
+        <button onclick="record()">采集音频</button>
+        <button onclick="watch()">start</button>
+        <button onclick="stop()">stop</button>
+        <h1>Hello PhoneGap</h1>
+        <h2 id="myInfo">获取设备信息ing</h2>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+        </div>
+        <button onclick='getNowAcc()'>当前</button>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+        // //写,在根目录创建一个文件readme.txt，并写入'hello phoneGap'
+        // function fail(){
+        //     alert('operate failed');
+        // }
+        // function writeTh(){
+        //     /*得到文件系统；得到文件入口对象；写操作*/
+        //     window.requestFileSystem(
+        //         LocalFileSystem.PERSISTENT,
+        //         0,
+        //         function(){
+        //             fs.root.getFile(
+        //                 'readme.txt',
+        //                 {create:true},
+        //                 function(fileEntry){
+        //                     fileEntry.createWriter(
+        //                         function(writer){
+        //                             //写入成功的函数
+        //                             writer.onwrite =function(){
+        //                                 alert('write success');
+        //                             }
+        //                             writer.write('hello Phonegap');
+        //                         },
+        //                     )
+        //                 },
+        //                 fail
+        //             );
+        //         },
+        //         fail
+        //     )
+        // }
+        myId=null;
+        //显示图片
+        function showPic(){
+            navigator.camera.getPicture( 
+                function(url){
+                    var image = document.getElementById('myImage');
+	                image.src =  url;
+                }, 
+                function(){
+                    console.log('fade');
+                }, 
+                {sourceType :Camera.PictureSourceType.PHOTOLIBRARY }
+            
+            );
+        }
+        //震动
+        function startVibrate(){
+            navigator.notification.vibrate(3000);
+        }
+        //发出蜂鸣声
+        function startBeep(){
+            navigator.notification.beep(3);
+        }
+        //显示警告窗口
+        function showAlert(){
+            navigator.notification.alert('hello Notification');
+        }
+        //采集音频信息
+        function record(){
+            navigator.device.capture.captureAudio(
+                function(list){
+                    for(var i=0;i<list.length;i++){
+                        //list数组保存录制音频的信息列表
+                        console.log(list[i].fullPath);
+                    }
+                },
+                function(){
+                    console.log("采集失败");
+                },
+                {limit:2}
+            );
+        }
+        //每500ms监听加速度信息
+        function watch(){
+            if(myId){
+                return
+            }
+          myId = navigator.accelerometer.watchAcceleration(
+                function(result){
+                console.log(result.x+" "+result.y+" "+result.z);
+            },
+            function(){},
+            {frequency:500}
+            );
+        }
+
+        //结束监听
+        function stop(){
+            navigator.accelerometer.clearWatch(myId);
+            myId=null;
+        }
+        //获取当前加速度传感器信息
+        function getNowAcc(){
+            navigator.accelerometer.getCurrentAcceleration(
+                function(result){
+                    console.log('获取成功'+'x:'+result.x+'y:'+result.y+'z:'+result.z);
+                },
+                function(){
+                    console.log('获取失败');
+                }
+            )
+        }
+    </script>
+</body>
+
+</html>

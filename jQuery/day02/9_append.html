@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<style>
+		.container {
+			border: 1px solid #aaa;  overflow:hidden;
+		}
+		.block {
+			float: left; margin: 10px;
+			border: 1px solid #aaa;
+			background: #faa;
+			width: 150px; height: 150px;
+		}
+		.block:hover{ box-shadow:0 5px 6px #000; }
+		.close {
+			float:right; padding:5px;
+			font-weight:bold; opacity:.2; cursor: pointer;
+		}
+		.close:hover { opacity: .5; }
+	</style>
+ </head>
+ <body>
+  <h1>添加/删除节点</h1>
+	<button id="add-block">添加区块</button>
+	
+	<div class="container">
+<!-- 		<div class="block"> -->
+<!-- 			<span class="close">×</span> -->
+<!-- 		</div> -->
+	</div>
+	
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		var $container=$(".container");
+		//查找id为add-block的按钮，绑定单击事件
+		$("#add-block").click(()=>{
+			var $b=$(`<div class="block">
+					<span class="close">×</span>
+				</div>`);
+			var r=parseInt(Math.random()*256);
+			var g=parseInt(Math.random()*256);
+			var b=parseInt(Math.random()*256);
+			$b.css("backgroundColor","rgb("+r+","+g+","+b+")");
+			$container.prepend($b);
+		});
+		//在$container绑定单击事件
+		//若当前元素的class是close
+		//删除当前元素的父元素
+		$container.click(e=>{
+			var $tar=$(e.target);
+			/*if($tar.hasClass("close")){
+				$tar.parent().remove();
+			}*/
+			if($tar.is(".close")){
+				$tar.parent().remove();
+			}
+		});
+	</script>
+	
+ </body>
+</html>

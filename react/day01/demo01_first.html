@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script type="text/babel">
+        /*jsx只是js的扩展，允许在js中直接编写HTML;ReactDOM.render(c1,c2),c1要渲染的元素，c2指定要将元素渲染到的容器*/
+        ReactDOM.render(
+                <h1> Hello React</h1>,
+                document.getElementById('container')
+        );
+    </script>
+</body>
+</html>

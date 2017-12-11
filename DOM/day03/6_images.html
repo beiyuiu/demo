@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    #slider{
+      width:200px; height:150px;
+      position:relative;
+      border:1px solid #555;
+    }
+    #slider>img{/*起始样式*/
+      position:absolute; top:0; left:0;
+      opacity:0;
+      transition:all .5s linear;
+    }
+    #slider>img.show{/*结束样式*/  
+		opacity:1; 
+		z-index:10;
+	}
+  </style>
+</head>
+<body>
+<div id="slider">
+  <img src="images/1.jpg" class="show" alt="花团锦簇"/>
+  <img src="images/2.jpg" alt="大漠戈壁"/>
+  <img src="images/3.jpg" alt="万紫千红"/>
+  <img src="images/4.jpg" alt="海洋生物"/>
+</div>
+<script>
+  /**只要反复执行就用周期性定时器
+  *1、任务函数：查找id为slider下的class为show的一个img；清空当前img的class；设置img的下一个兄弟元素的class为show
+  *2、将next放入周期性定时器中，设置时间间隔为3秒，将序号保存在timer中；查找id为slider的div；为div绑定鼠标进入事件；停止定时器，清空timer；为div绑定鼠标移出事件；启动定时器；查找id为slider下的所有img；遍历所有img；为每个img绑定单击事件；弹出提示：显示当前img的alt属性值
+  *3、
+  */
+  function next(){
+	var img=document.querySelector("#slider img.show");
+	img.className="";
+	if(img.nextElementsibling)
+		img.nextElementsibling.className="show";
+	else
+		img.parentNode.firstElementChild.className="show";
+  }
+	var timer=setInterval(next,3000+500);
+	var div=document.getElementById("slider");
+	div.onmouseover=function(){
+		clearInterval(timer);
+		timer=null;
+	}
+	div.onmouseout=function(){
+		var timer=setInterval(next,3000+500);
+	}
+	var imgs=document.querySelector("#slider>img");
+	console.log(imgs);
+	for(var img of imgs){
+		img.onclick=function(){
+			alert(this.alt);
+		}
+	}
+</script>
+</body>
+</html>

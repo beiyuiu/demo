@@ -1,0 +1,4 @@
+<h1>父组件</h1>
+<input type="text" [(ngModel)]="sonName"/>
+<hr/>
+<son (customEvent)="rcvMsg($event)" [myName]="sonName"></son>

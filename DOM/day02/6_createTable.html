@@ -1,0 +1,73 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>动态创建表格</title>
+<meta charset="utf-8" />
+<style>
+	table{width:600px; border-collapse:collapse;
+		text-align:center;
+	}
+	td,th{border:1px solid #ccc}
+	thead td{font-weight:bold;}
+</style>
+
+</head>
+<body>
+	<div id="data"></div>
+	<script src="ajax.js"></script>
+  <script>
+	ajax("get","6_getUser.php","")
+	.then(data=>{
+		//创建table，追加到id为data的div中
+		var table=document.createElement("table");
+		//创建thead，将thead追加到table中
+		/*var thead=document.createElement("thead");
+		table.appendChild(thead);*/
+		var thead=table.createTHead();
+		//创建tr，将tr追加到thead中
+		/*var tr=document.createElement("tr");
+		thead.appendChild(tr);*/
+		var tr=thead.insertRow();
+		//遍历data中第一个对象的每个属性
+		for(var key in data[0]){
+			//创建th，将th追加到tr
+			/*var th=document.createElement("th");
+			tr.appendChild(th);
+			*/
+			//设置th的内容为当前属性名
+			tr.insertCell().innerHTML=key;
+		};
+		//创建tbody，追加到table中
+		/*var tbody=document.createElement("tbody");
+		table.appendChild(tbody);*/
+		var tbody=table.createTBody();
+		//遍历data数组中每个元素
+		for(var i in data){
+			//每遍历一个元素对象，就创建一个tr，追加到tbody中
+			/*var tr=document.createElement("tr");
+			tbody.appendChild(tr);*/
+			var tr=tbody.insertRow();
+			//遍历data中当前元素对象的每个属性
+			for(var j in data[i]){
+			//每遍历一个属性，就创建一个td，追加到tr中
+				/*var td=document.createElement("td");
+				tr.appendChild(td);*/
+				var td=tr.insertCell();
+				console.log(data[i][j]);
+			//设置td的内容为data中当前元素对象的当前属性的值
+				td.innerHTML=data[i][j];
+				console.log(typeof(j));
+			}
+		};
+		document.querySelector("#data")
+				.appendChild(table);
+	})
+	/*var json=[
+    {"ename":"Tom", "salary":11000, "age":25},
+    {"ename":"John", "salary":13000, "age":28},
+    {"ename":"Mary", "salary":12000, "age":25}
+  ];*/
+	
+  </script>
+</body>
+</html>

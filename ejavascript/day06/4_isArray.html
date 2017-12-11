@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<script>
+		if(typeof Array.isArray !="function"){
+			Array.isArray=function(obj){
+				return Object.prototype.toString.call(obj)=="[object Array]"
+			}
+		}
+		var obj1=[],obj2={},obj3=new Date(),obj4={};
+			obj4.__proto__=obj1;
+		document.write(
+			Array.isArray(obj1)+"<br>"+
+			Array.isArray(obj2)+"<br>"+
+			Array.isArray(obj3)+"<br>"+
+			Array.isArray(obj4)+"<br>"
+		);
+	</script>  
+ </body>
+</html>

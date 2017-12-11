@@ -1,0 +1,347 @@
+Session:会话
+window.sessionStorage:类数组对象：会话级数据存储
+    在浏览器进程所分得内存中存储一次web会话数据，可供此次会话的页面共同使用，浏览器一旦关闭就消失
+    作用：在同一个会话中所有页面之间共享数据
+    示例：登录用户名/登录用户编号
+    sessionStorage[key]=val         保存一个数据
+    sessionStorage.setItem(key,val);        保存一个数据
+    var val=sessionStorage[key];        读取一个数据
+    var val=sessionStorage.getItem(key);        读取一个数据
+    sessionStorage.removeItem(key);         删除数据
+    sessionStorage.clear()          清除数据
+    sessionStorage.length;          数据个数
+    sessionStorage.key(i);          获取第i个key
+localStorage:本地存储对象(跨会话级存储)
+    浏览器能管理外存(磁盘)中存储用户数据，可供此次会话及后续会话的页面共存；即关闭了也不消失
+    作用：用户样式风格
+    localStorage[key]=val         保存一个数据
+    localStorage.setItem(key,val);        保存一个数据
+    var val=localStorage[key];        读取一个数据
+    var val=localStorage.getItem(key);        读取一个数据
+    localStorage.removeItem(key);         删除数据
+    localStorage.clear()          清除数据
+    localStorage.length;          数据个数
+    localStorage.key(i);          获取第i个key
+    localStorage数据发生修改，触发window.onstorage事件
+WebSccket:客户端链接服务器就不再断开，永久链接
+
+1、连接WS服务器
+var socket = new WebSocket("ws://127.0.0.1:9001");
+2、
+socket.send(srtingMsg);
+3、
+socket.onmesage = function(e){e.data}
+响应式网页
+    1G：只能通话
+    2G：可以通话，短信
+    2.5G：GPRS可以通话，短信，上网WML
+    3G:IOS/Android(Linux)可以通话，短信，视频，上网-HTML
+
+   Responsive Web Page  ：响应式网页/自适应网页。2010年提出，一个网页会自动根据用户浏览设备不同，自动改变布局。
+   Ps:代码更复杂，不适合大型网页
+   必备条件：
+    1、流式布局float:left;display:inline-block;
+    2、可以改变尺寸图片
+    3、可以改变大小的文字
+编写响应式网页
+    Viewport(视口) 早期3G手机为浏览大尺寸网页，强行缩小网页页面，导致图片、文字、超链接都很小
+    IOS提出“视口”，视口用于盛放网页内容，尺寸可以随意大小
+    Android也借鉴该概念
+
+    如何做网页手机适配
+        1、申明一个viewport元标签
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no,minimal-ui">
+        width=device-width：表示视口宽度是设备屏幕宽度
+        initial-scale=1.0：初始缩放比例
+        user-scalable=no：用户是否可以调整缩放比例
+        2、使用流式布局
+            float:left;display:inline-block;
+        3、所有容器使用相对尺寸，不用绝对尺寸
+
+        4、所有文字使用相对尺寸，不用绝对尺寸
+            body{
+                font-size:1.2em;
+            }
+        5、所有图片使用相对尺寸，不用绝对尺寸
+            img{
+                width:50%
+            }
+        6、使用CSS3 Media Query（媒体查询）技术
+            Media :浏览器设备
+            Media Query：查询当前浏览网页的设备类型，以及特性（解析度，对比度，尺寸，手持方向）
+            媒体查询：1、根据媒体查询结果执行不同外部CSS文本
+                <link media="screen and (min-width:768px) and (max-width:991px)" rel="stylesheet" href="pad.css"/>
+                    2、根据媒体查询结果执行不同CSS片段
+                    @media screen and (min-width:768px) and (max-width:991px){
+                        选择器{样式设定}
+                    }
+1、起步
+    下载css/fonts/js
+    <html lang="zh-CN">
+    language:指当前网页所有自然语言
+    作用：为浏览器确定基础语言；为读屏软件来确定基础的发音
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    X-UA-Compatible：指定IE浏览器的兼容性指定--仅IE浏览器读取头消息
+    IE=edge：告诉IE使用最新的版本渲染网页
+     <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+      <![endif]-->
+      针对IE9以下浏览器
+2、全局css样式
+    .btn  按钮基础样式
+    .btn-default  白底黑色按钮
+    .btn-danger/warning/success/info/primary
+    .img-rounded 圆角图片
+    .img-circle 圆形图片
+    .img-thumbnail  缩略图
+    .img-responsive 响应式图片
+    文本
+    .text-danger/warning/success/info/primary
+    .bg-danger/warning/success/info/primary     背景颜色
+    .text-left/center/right/justify             对齐方式
+    .text-uppercase/lowercase/capitailze        转换
+    列表
+    .list-unstyled   去除提示符号
+    .list-inline    行内列表
+屏幕分类：
+    1、大型PC屏幕(Large-lg) :w>=1200px
+    2、中型PC屏幕(Medium-md) :1200px>w>992px
+    3、小型PAD屏幕(Small-sm) :992px>w>768px
+    4、超小型PHONE屏幕(ExtraSmall-xs) :w<768px
+表格：
+    .table-bordred      带框表格
+    .table-striped      隔行变色
+    .table-hover        悬停变色
+    .table-responsive   响应式表格(table父元素上)
+    Bootlint:Bootstrap官方检测HTML工具
+栅格系统：
+    1、最外层必须使用容器
+        div.container或div.container_fluid
+    2、容器中可以放置任何内容，若想使用栅格系统必须用div.row
+    3、一个.row中不能放置其它内容，只能放置.col列中可以放置任何内容
+        .container>.row>.col
+    4、Bootstrap中默认12等分，必须每个列指定行占比
+    5、栅格系统针对不同的屏幕提供不同的列
+        .col-lg-1/2/3.../12
+        .col-md-1/2/3.../12
+        .col-sm-1/2/3.../12
+        .col-xs-1/2/3.../12
+网站布局方法    1、Table布局  简单易控；语义错误，页面渲染效率低
+                2、DIV+CSS   语义正确；页面渲染速度快；不易控制
+                3、Bootstrap 简单易控；渲染速度快；支持响应
+表单
+    1、默认
+        <form>
+            <div class="form-group">
+                <label class="control-label">用户名</label>
+                   <input class="form-control">
+                   <span class="help-block">6-8位字母</span>
+            </div>
+        </form>
+    2、行内
+         <form class="form-inline">
+               <div class="form-group">
+                    <label class="sr-only">用户名</label>
+                           <input class="form-control">
+                    </div>
+                </form>
+    3、水平
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-*-*">
+                <label class=""></label>
+            </div>
+        </div>
+    </form>
+
+3、组件
+下拉菜单/三级结构
+    <div class="dropdown">
+        <a data-toggle="dropdown">触发元素</a>
+        <div/ul class="dropdown-menu">隐藏元素</div/ul>
+    </div>
+导航
+
+4、JS插件
+样式语言
+    静态样式语言
+        css可以直接被浏览器解析；作为语言，css不完整，缺少编程语言必须概念：数据类型、变量、运算、函数、继承等特性；导致样式可维护性差。
+    动态样式语言
+        第三种：Sass/SCSS/less在css基础上添加了动态编程语言必须的特性，提高了样式可维护性。
+        注：浏览器只能识别标识css，所有动态样式语言的代码必须转换为css，该过程称为Comple。
+Less样式语言
+    两种使用方法：
+        客户端使用less.js文件
+            编写x.less
+            在HTML引入x.less文件，引入less.js
+            客户端请求HTML，下载x.less以及less.js，在客户端运行.js把less编译css
+            减慢客户端样式呈现速度
+        服务器使用less
+            编写x.less
+            安装.less编译环境，执行x.less编译x.css
+            编写HTML。引入编译结果x.css
+            客户端请求HTML文件，下载.css
+Less语法
+    Less支持所有css语法
+    Less支持多行、单行注释，只有多行注释编译到css文件，推荐单行注释
+    Less支持变量概念
+        定义:@变量名:值
+        使用:color:@变量名
+        变量可以取为任何合法样式值
+    Less支持变量和常量算术运算
+    Less支持选择器混入
+    Less样式混入时指定参数
+    Less函数
+        ceil()              向下取整
+        floor();            向上取整
+        percentage(num)    百分数
+        darken(color,per)  变暗
+        lighten(color,per)  变亮
+    Less可以使用@import实现文件包含
+5、定制
+    通过Bootstrap 的less文件实现定制
+        瘦身：删除不需要的样式只需注释bootstrap.less中不需样式
+        粗粒度定制：修改variables.less值；
+        细粒度定制   dropdown.less
+lessc e:/Less/bootstrap.less e:/less/bootstrap.css
+ MVVM
+ 视图（View）   用户界面
+ 模型（Model）  数据
+ 中间人（ViewModel）
+ Vue指令
+    v-if        //条件渲染，由表达式true或false删除或添加元素
+        v-if="expression"  expression 返回bool值，元素删除转为注释
+    v-show      //条件渲染，原数据始终渲染到HTML，只是设置了display=block/none
+    v-else      //必须跟v-if或v-show元素后，否则不能识别
+    v-for
+    v-bind      //指令后带参数，中间冒号，参数通常HTML特性：v-bind:arguments="expression";  <img v-bind:src="imgUrl"/>  <p v-bind:style="{backgroundColor:myBg}"/>
+    v-on        //监听DOM事件<a v-on:click="方法名"></a>  <a v-on:click.stop="方法名"></a>
+                .stop       停止事件冒泡
+                .prevent    阻止默认行为
+                .13/.enter  事件触发时回调
+                .once       只触发一次
+                .left       左键
+                .right      右键
+                .middle     中键
+    v-model     //用于与当前元素绑定，value值 <input type="text" v-model="变量"/>
+                .lazy="变量"      懒惰：只有在回车或onblur时触发
+                .number="变量"
+                .trim="变量"       去除空格
+ 基础指令：Vue有良好扩展性，可以自定义指令
+ push/pop/shift/unshift/sort/reverse        更新
+ filter/concat/slice        不更新
+
+ Vue自定义指令(具体业务功能)
+    创建Vue添加指令
+        new Vue({
+            el:
+            data:
+            directives{
+                change:{
+                    bind:function(){},          //指令绑定到元素
+                    update:function(){},        //若调用指令时，传递参数，参数发生变化
+                    unbind:function(){},        //解除绑定
+                }
+            }
+        })
+
+组件:可以被反复使用，带有指定的功能视图(View)
+创建组件：
+    Vue.component("组件名称",{组件内容,template:'<h3>模块</h3>'});
+    Vue.component("my-component",{template:'<h3>模块</h3>'});
+组件使用：
+    <组件名></组件名>
+注：组件命名，建议ad-fds-sdf
+    一个组件渲染多个元素，将多个元素放在一个跟标签，否则报错
+创建复合组件：组件又调用其他组件;一个完整Vue项目，比作组件树：根组件-》层次组件-》...
+组件的生命周期：
+    1、create(创建：初始化操作)
+        deforeCreate
+        created
+    2、mount(挂载DOM树)
+        beforeMount
+        mounted
+    3、update（数据更新-》操作或逻辑判断）
+        beforeUpdate
+        updated
+    4、destroy（清理工作）
+        beforeDestroy
+        destroyed
+组件间通信：
+    父组件调用子组件（数据不在data中时）
+        <child myValue="123"></child>
+    子组件获取父组件传的值
+        Vue.component("child",{
+            props:["myValue"],   //声明：父组件传递参数名
+            template:`<div>{{myValue}}</div>`
+        });
+    子组件-》父组件
+    在父组件定义一个方法，用于接收子组件通过事件发送来的数据
+    methods:{
+        getData:function(){
+            msg:子组件通过事件传递来的数据
+         }
+    }
+    在父组件模板：绑定事件处理函数
+    <child @自定义事件名="方法名"></child>
+
+    在子组件中触发事件，并且传递数据
+    this.$emit("触发事件名",传递数据);
+    组件间通信($parent;$refs)
+    父组件获取子组件数据
+        在调用子组件时，指定属性ref
+        <child ref="mySon"></child>   //表示子组件数据；  mySon表示子组件对象
+        根据指定名称，找到子组件实例对象
+        this.$refs.mySon
+    子组件获取父组件数据
+        this.$parent    //数据在data中时使用
+    借助一个公共Vue实例对象，不同组件通过该对象完成事件绑定和触发
+    var bus = new Vue();
+    bus.$on();   //绑定事件
+    bus.$emit();    //触发事件
+    bus.$on("事件名",function(msg){
+
+    });
+    bus.$emit("事件名","传递的数据");
+    SPA(single page application)
+        1、引入对应vue-router.js文件
+        2、显示组件 ①<div id="app"><parent></parent></div>
+                ②<div id="app">
+                    <router-view></router-view>  //渲染不同组件
+                </div>
+        3、创建各个组件
+        4、配置信息(路由词典)  ：每个路由地址配置一个路由地址
+            const myRoutes=[
+                {path:"/start",component:myStart},
+                {path:"/list",component:myList},
+            ];
+        5、创建路由对象
+            const Router = new VueRouter({
+                routes:myRoutes
+            });
+        6、在Vue对象添加现在应用路由表对象
+            new Vue({
+                router:myRouter
+            });
+        7、测试  地址栏输入不同路由地址
+    组件间跳转
+        1、直接修改路由地址
+        2、通过router-link实现跳转
+            <router-link to="/order"></router-link>
+        3、通过js实现
+            jumpToLogin:function(){
+                this.$router.push("/login");
+            }
+    参数传递
+        1、明确发送方和接收方
+        2、配置接收方法路由地址
+            {path:"/main/:uname",component:MainComponent},
+        3、接收方获取传递的数据
+            this.$route.params.uname
+        4、跳转时发送参数
+            this.$router.push("/main/tom");
+            <router-link to="/main/jerry">跳转</router-link>
+    Vue cli 脚手架（创建Vue项目工具）
+    header("Access-Control-Allow-Origin:*");允许跨域请求  *代表所有

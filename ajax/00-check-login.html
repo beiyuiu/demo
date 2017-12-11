@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="00-common.js"></script>
+  <script>
+	function checkLogin(){
+		var xhr =createXhr();
+		xhr.open("post","00-check-login.php",true);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				$("show").innerHTML=xhr.responseText;
+			}
+		}
+		//增加：设置Content-Type的消息头为application/x-www-form-urlencoded
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		var uname=$("uname").value;
+		var upwd=$("upwd").value;
+		xhr.send("uname="+uname+"&upwd="+upwd);
+	}
+  </script>
+ </head>
+ <body>
+	<div id="show"></div>
+	<p>用户名：<input type="text" id="uname"></p>  
+	<p>密码：<input type="password" id="upwd"></p>
+	<p><input type="button" value="登录" onclick="checkLogin()"></p>
+ </body>
+</html>

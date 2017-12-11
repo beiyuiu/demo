@@ -1,0 +1,37 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>事件处理</title>
+<meta charset="utf-8" />
+
+</head>
+<body>
+ 	<form>
+		姓名:<input name="username"/><br>
+		密码:<input type="password" name="pwd"/><br>
+    爱好:<input type="checkbox" name="favs" value="running"/>跑步
+          <input type="checkbox" name="favs" value="swimming"/>游泳
+          <input type="checkbox" name="favs" value="basketball"/>篮球
+          <br>
+		<input type="submit"/>
+	</form>
+  <script>
+    //?username=dudou&pwd=123456&favs=running&favs=swimming&favs=basketball
+	function search2Obj(){
+		var obj={};
+		if(location.search){
+			var arr=location.search.slice(1).split("&");
+			for(var str of arr){
+				var subs=str.split("=");
+				if(obj[subs[0]]===undefined){
+					obj[subs[0]]=subs[1];
+				}else{
+					//将属性的旧值和新值，拼接到一个共同的数组中，然后将数组保存到新的属性中
+					obj[subs[0]]=[].concat(obj[subs[0]],subs[1]);
+				}
+			}
+		}return obj;
+	}var obj=search2Obj();
+  </script>
+</body>
+</html>

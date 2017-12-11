@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function round(num,d){
+			//num要转换的数字，d小数位数
+			num*=Math.pow(10,d);
+			//对num四舍五入取整
+			num=Math.round(num);
+			//返回num/10的d次方的结果
+			return num/=Math.pow(10,d);
+		}
+		console.log(round(12.3456,2));
+		console.log(round(12.3456,-1));
+		console.log(round(12.3456,1));
+	</script>
+</body>
+</html>

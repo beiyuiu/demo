@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="00-common.js"></script>
+  <script>
+	function loadProvince(){
+		var xhr=createXhr();
+		xhr.open("get","06-testJSON.php",false);
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var resText=xhr.responseText;
+				var province=JSON.parse(resText);
+				var opts="";
+				for(var i=0;i<province.length;i++){
+					//拼接
+					opts+="<option value='"+i+"'>";
+					opts+=province[i];
+					opts+="</option>";
+				}
+				$("selProvince").innerHTML=opts;
+			}
+		}
+		xhr.send(null);
+	}
+
+	function loadCity(){
+		var xhr=createXhr();
+		var pid=$("selProvince").value;
+		var url="cityjson.php?pid="+pid;
+		xhr.open("get",url,true);
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var city=JSON.parse(xhr.responseText);
+				var opts="";
+				for(var i=0;i<city.length;i++){
+					opts+="<option value='"+i+"'>";
+					opts+=city[i];
+					opts+="</option>";
+				}
+				$("selCity").innerHTML=opts;
+			}
+		}
+		xhr.send(null);
+	}
+	function pageLoad(){
+		loadProvince();
+		loadCity();
+	}
+  </script>
+ </head>
+ <body onload="pageLoad()">
+  <select  id="selProvince" onChange="loadCity()"></select>
+  <select id="selCity"></select>
+ </body>
+</html>

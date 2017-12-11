@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XML</title>
+	<script src="00-common.js"></script>
+	<script>
+		function getXml(){
+			var xhr=createXhr();
+			xhr.open("get","student.xml",true);
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					var xmlDoc=xhr.responseXML;
+					var students=xmlDoc.getElementsByTagName("student");
+					for(var i=0;i<students.length;i++){
+						var stu=students[i];
+						var name=stu.getElementsByTagName("name")[0];
+						var age=stu.getElementsByTagName("age")[0];
+						var gender=stu.getElementsByTagName("gender")[0];
+						console.log("姓名："+name.innerHTML+"\n"+"年龄："+age.innerHTML+"\n"+"性别："+gender.innerHTML+"\n");
+					}
+//					var studentList=xmlDoc.getElementsByTagName(studentList);
+//					console.log(studentList[0]);
+
+				}
+			}
+			xhr.send(null);
+		}
+	</script>
+</head>
+<body>
+	<button onclick="getXml()">xml</button>
+</body>
+</html>

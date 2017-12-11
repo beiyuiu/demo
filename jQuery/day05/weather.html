@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<script src="js/jquery-3.2.1.js"></script>
+	<script>
+		function handler(json){
+			$("body").prepend("<h1>"+json+"</h1>");
+		}
+		$.ajax({
+			type:"get",
+			url:"http://localhost/weather.php",
+			dataType:"jsonp"
+		}).then(handler);
+		/*//客户端定义函数，准备接收服务器的json
+		function handler(json){
+			$("body").prepend("<h1>"+json+"</h1>");
+			//删除动态创建的最后一个script
+			$("body").children("script")
+						.last().remove();
+		}
+		//动态添加script，跨域请求远程PHP；同时携带客户端处理函数名
+		$("body").append(
+			`<script src="http://localhost/weather.php?handler=handler">
+			<\/script>`
+		);*/
+		
+	</script>  
+ </body>
+</html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+	function iner(){
+		console.log(document.getElementById("d1").innerHTML);
+	}
+	function iner1(){
+		d1.innerHTML="这是我的第一个DOM操作";
+	}
+  </script>
+ </head>
+ <body>
+<div id="d1">Hello World</div>  
+<button onclick="iner()">获取div的内容</button>
+<button onclick="iner1()">修改div的内容</button>
+ </body>
+</html>

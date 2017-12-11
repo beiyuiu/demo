@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var sel =["中国","美国","俄罗斯","日本"];
+		var unsel=["朝鲜","越南","老挝","柬埔寨"];
+		function testConcat(){
+			sel=sel.concat(unsel);
+			unsel.length=0;
+			console.log("选中的国家："+sel);
+			console.log("备选国家："+unsel);
+		}
+		testConcat();
+		function testSlice(){
+			var i=sel.slice(1,2);
+			var j=sel.slice(-5,-4);
+			console.log(i);
+			console.log(j);
+		}
+		testSlice();
+		function testSplice(){
+			var sel =["中国","美国","俄罗斯","日本"];
+			var unsel=["朝鲜","越南","老挝","柬埔寨"];
+			/*var result=sel.splice(1,0,"泰国","韩国");
+			console.log(sel);
+			console.log(result);*/
+			var result=sel.splice(2,2,"韩国","泰国");
+			console.log(sel);
+			console.log(result);
+		}
+		testSplice();
+		function test(){
+			var sel =["中国","美国","俄罗斯","日本"];
+			var unsel=["朝鲜","越南","老挝","柬埔寨"];
+			var input=prompt("请输入一个国家");
+			var index=-1;
+			for(var i=0;i<unsel.length;i++){
+				if(input==unsel[i]){
+					index=i;
+					break;
+				}
+			}		
+			if(index!=-1){
+				sel[sel.length]=input;
+				var result=unsel.splice(index,1);
+				console.log(sel);
+				console.log(unsel);
+				console.log(result);
+			}else{
+				console.log("你输入的国家不存在");
+				}
+		}
+		test();
+	</script>
+</body>
+</html>

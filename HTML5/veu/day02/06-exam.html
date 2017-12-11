@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="message" @keyup.13="createUser"/>
+        <br/>
+        <ul>
+            <li v-for="(user,idx) in users" >
+                <span>{{user.text}}</span>
+                <button @click="removeUser(idx)">X</button>
+            </li>
+        </ul>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var exampleData = {
+            message:"",
+            users:[{text:'tom'}]
+        }
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+            methods:{
+                createUser:function(){
+                    this.users.push({text:this.message});
+                    //清除上次输入的内容
+                    this.message="";
+                },
+                removeUser:function(idx){
+                    this.users.splice(idx,1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

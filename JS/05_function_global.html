@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+	//全局变量尽量声明在script标记内所有的function标记外，一律使用var关键字
+	var a=10;
+	var b=20;
+	c=30;
+	function showMsg(){
+		d=40;//全局变量，因为声明时未加var
+		console.log(a,b,c,d);
+	}
+	function showInfo(){
+		console.log(a,b,c,d);
+	}
+	/**
+	*声明提前  JS程序在正式执行前，会将所有var声明的变量以及function生命的函数，预读到所在作用域的顶端。但赋值还保留在原位置处
+	*/
+	function show(){
+		console.log(num);/*num is not defined
+						at show (05_function_global.html:24)
+						at HTMLButtonElement.onclick (05_function_glo*/
+		/*var num=666;
+		console.log(num);//undefined*/
+	}
+  </script>
+  <button onclick="showMsg()">showMsg()</button>
+  <button onclick="showInfo()">showInfo()</button>
+  <button onclick="show()">show()</button>
+ </body>
+</html>

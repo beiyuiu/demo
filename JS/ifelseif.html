@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+ <script>
+	function showScore(){
+		var score=prompt("请输入分数");
+		if(score>=90){
+			alert("A");
+		}else if(score>=80){
+			alert("B");
+		}else if(score>=60){
+			alert("C");
+		}else{
+			alert("D");
+		}
+	}
+ </script> 
+ <button onclick="showScore()">判断成绩</button>
+ </body>
+</html>

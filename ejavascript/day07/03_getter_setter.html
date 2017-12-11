@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+    var eric={
+      id:1001,
+      ename:"Erie",
+      _age:25
+    }
+    Object.defineProperties(eric,{
+      _age:{enumerable:false,configurable:false},
+      age:{//访问器属性
+        get(){
+          console.log("自动调用get");
+          return this._age;
+        },
+        set(val){
+          console.log("自动调用set,传入了"+val);
+          if(val>=18&&val<=65)
+            this._age=val;
+          else
+            throw new RangeError("年龄必须介于18~65之间");
+        },
+        enumerable:true,
+        configurable:true
+      },
+    })
+    //eric.age=-2;
+    for(var key in eric){
+      console.log(key+":"+eric[key]);
+    }
+  </script>
+ </body>
+</html>

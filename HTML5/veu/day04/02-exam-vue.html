@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件监听</h3>
+    <div id="app">
+       <my-component></my-component>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        Vue.component("my-component",{
+            template:`
+              <div>
+                  <span>{{userName}}</span>
+                   <ul>
+                       <li v-show="myHide" v-for="(item,key) in list">{{item}}</li>
+                   </ul>
+                   <input type="button" @click="setHide" value="ckickMe"/>
+               </div>
+           `,
+            data:function(){
+                return {
+                    myHide:true,
+                    userName:"tom",
+                    list:["tom","jem","lun","mge"]
+                }
+            },
+            methods:{
+                setHide:function(){
+                    if(this.myHide){
+                        this.myHide = false;
+                    }else{
+                        this.myHide = true;
+                    }
+                }
+            },
+            beforCreate:function(){},
+            created:function(){},
+            beforMount:function(){},
+            mounted:function(){},
+            beforUpdate:function(){},
+            updated:function(){},
+            beforDistory:function(){},
+            distoryed:function(){}
+        });
+        var app  = new Vue({
+            el:"#app",
+        });
+    </script>
+</body>
+</html>

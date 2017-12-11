@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="00-common.js"></script>
+	
+	<script>
+		function getList(currentPage){
+			var xhr=createXhr();
+			var url="05-list-page.php?currentPage="+currentPage;
+			xhr.open("get",url,true);
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					var resText=xhr.responseText;
+					var array=JSON.parse(resText);
+					var html="";
+					for(var i=0;i<array.length-1;i++){
+						var user=array[i];
+						//console.log(user);
+						html+="<tr>";
+							html+="<td>"+user.uname+"</td>";
+							html+="<td>"+user.email+"</td>";
+							html+="<td>"+user.phone+"</td>";
+							html+="<td>"+user.gender+"</td>";
+						html+="</tr>";
+					}
+					$("show-body").innerHTML=html;
+					var pageObj=JSON.parse(array[array.length-1]);
+					//console.log(pageObj);
+					var pageHTML="<tr>";
+						pageHTML+="<td><a href='javascript:loadUser(1)'>首页</a></td>";
+						pageHTML+="<td><a href='javascript:loadUser("+pageObj.prePage+")'>上一页</a></td>";
+						pageHTML+="<td><a href='javascript:loadUser("+pageObj.nextPage+")'>下一页</a></td>";
+						pageHTML+="<td><a href='javascript:loadUser("+pageObj.totalPage+")'>尾页</a></td>";
+						pageHTML+="</tr>";
+					//console.log(pageHTML);
+					$("show-page").innerHTML=pageHTML;
+				}
+			}
+			xhr.send(null);
+		}
+	
+	</script>
+</head>
+<body onload="getList(1)">
+	行数：<input type="text" id="input">
+	<table border=1px>
+		<thead>
+			<tr>
+				<th>登录名</th>
+				<th>Email</th>
+				<th>移动电话</th>
+				<th>性别</th>
+			</tr>
+		</thead>
+		<tbody id="show-body"></tbody>
+		<tfoot id="show-page"></tfoot>
+	</table>
+</body>
+</html>

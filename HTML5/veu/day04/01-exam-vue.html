@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件监听</h3>
+    <div id="app">
+       <p>{{name}}</p>
+        <ul style="list-style: none">
+            <li v-show="myHide" v-for="(item,key) in list">{{item}}:{{key}}</li>
+        </ul>
+        <button @click="setHide">show</button>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+
+       var exampleData = {
+           name:"hello",
+           list:[10,20,3,0,5,6],
+           myHide:true
+        };
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+            methods:{
+                setHide:function(){
+                    if(this.myHide){
+                        this.myHide = false;
+                    }else{
+                        this.myHide = true;
+                    }
+            }
+       }
+        });
+    </script>
+</body>
+</html>

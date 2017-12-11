@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<script>
+		var bus=["a","f","d"];
+		var [v,b,n]=bus;
+		console.log(v,b,n);
+
+		var a=3,b=5;
+		[a,b]=[b,a];
+		console.log(a,b);
+
+		var date={y:2017,m:9,d:21};
+		var {y:year,m:month,d:date}=date;
+		console.log(year,month,date);
+
+		function fun({y:year,m:month,d:date}){
+			console.log(year,month,date);
+		}
+		var date={y:2017,m:9,d:21};
+		fun(date);
+	</script>  
+ </body>
+</html>

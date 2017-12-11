@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/babel">
+    var MyBtn = React.createClass({
+        getInitialState:function(){
+            return {
+                isBtnOn:false
+            }
+        },
+        handleClick:function(){
+            //setState为异步操作
+            this.setState({isBtnOn:true},
+                function(){
+                    console.log(this.state.isBtnOn);
+                }
+            );
+        },
+        render:function(){
+            return <button onClick={this.handleClick}>{this.state.isBtnOn?'open':'close'}</button>
+        }
+    });
+    ReactDOM.render(
+        <MyBtn></MyBtn>,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>

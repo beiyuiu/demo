@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	.ok{color:green;}
+	.err{color:red;}
+  </style>
+ </head>
+ <body>
+	用户名 :<input id="txtName"/>
+	<span id="msgName"></span>
+	<script src="../ajax.js"></script>
+	<script>
+		//其实id属性值，自动就是一个全局变量
+		var txtName=document.getElementById("txtName");
+		var msgName=document.getElementById("msgName");
+		//每当输入完一个字符后，自动执行
+		txtName.onkeyup=function(){
+			if(txtName.value!=""){
+				ajax(
+					"get",
+					"data/valiName.php?uname="+txtName.value,
+					"",
+					"text"
+				).then(//然后
+					function(data){
+						if(data=="true"){
+							msgName.innerHTML="可用";
+							msgName.className="ok";
+						}else{
+							msgName.innerHTML="已被占用";
+							msgName.className="err";
+						}
+					}
+				)
+			}else msgName.innerHTML="";
+		}
+	</script>
+ </body>
+</html>

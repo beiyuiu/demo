@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h3>vue 指令v-else</h3>
+<div id="app">
+   <h4 v-if="age>=25">age:{{age}}</h4>
+    <h4 v-else>name:{{name}}</h4>
+    <hr/>
+    <h4 v-show="name.indexOf('g')>0">name:{{name}}</h4>
+    <h4 v-else>没找到</h4>
+</div>
+<script src="js/vue.min.js"></script>
+<script>
+   var exampleData = {
+      sex:"Male",
+       age:24,
+       name:"lion"
+   };
+    new Vue({
+        el:"#app",
+        data:exampleData
+    })
+</script>
+</body>
+</html>

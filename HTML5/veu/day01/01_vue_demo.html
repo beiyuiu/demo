@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h3>vue</h3>
+<div   id="app">
+    <h4>{{message}}</h4>
+    <!--括号中可运算-->
+    <h4>{{3+5}}</h4>
+    <!--获取数据对象中属性值-->
+    <h4>{{car.brand}}</h4>
+    <!--三目运算-->
+    <h4>{{count>totalNum?"success":"error"}}</h4>
+    <!--布尔值-->
+    <h4>{{hasMore}}:{{!hasMore}}</h4>
+    <h4>{{html}}</h4>
+</div>
+<script src="js/vue.min.js"></script>
+<script>
+   var exampleData = {
+       message:"hello vue",
+       html:"<h2>年份</h2>",
+       count:3,
+       totalNum:10,
+       hasMore:true,
+       car:{
+           brand:"volvo",
+           price:30
+       }
+   };
+    new Vue({
+        el:"#app",
+        data:exampleData
+    })
+</script>
+</body>
+</html>

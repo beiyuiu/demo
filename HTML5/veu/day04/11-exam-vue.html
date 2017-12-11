@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件生命周期</h3>
+    <div id="app">
+       <parent></parent>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        Vue.component("parent",{
+            template:`
+                <div>
+                    <h4>父组件</h4>
+                    <ul>
+                        <li v-for="item in list">{{item}}</li>
+                    </ul>
+                    <child userName="tom"></child>
+                    <child userName="jerry"></child>
+                </div>
+            `,
+            data:function(){
+                return {
+                    list:[1,2,3,4,5]
+                }
+            }
+        });
+        Vue.component("child",{
+            props:["userName"],
+            data:function(){
+                return {userInput:""};
+            },
+            template:`
+                 <div>
+                    <input type="text"  v-model="userInput"/>
+                    <button @click="sendData">点击发数据</button>
+                 </div>
+            `,
+           methods:{
+               sendData:function(){
+                    this.$parent.list.push(this.userName+":"+this.userInput);
+                   this.userInput="";
+                }
+            }
+        });
+        new Vue({
+            el:"#app"
+        });
+    </script>
+</body>
+</html>

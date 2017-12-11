@@ -1,0 +1,17 @@
+li{
+	list-style:none;
+}
+li span{
+	padding-left: 20px;
+	cursor: pointer;
+  background: url("../images/add.png") no-repeat center left;
+}
+li ul{ /*定义起始样式，添加transition*/
+	height:0px;
+	overflow:hidden;
+	transition:all .5s linear;
+	/*凡是添加了transition的元素，无论以任何途径修改样式时，都自带过渡效果*/
+}
+.open{ background: url("../images/minus.png") no-repeat center left; }
+.open+ul{/*定义目标样式，来回变化*/ 
+	height:104px; }

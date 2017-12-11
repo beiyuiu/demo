@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<textarea id="txtMsg" style="width:500px;height:300px;">床前明月光，一行白鹭上青天，日照香炉生紫烟</textarea>
+	<script src="ajax.js"></script>
+	<script>
+		ajax("get","05_kwords.php","")
+		.then(function(kwords){
+			var reg=new RegExp(kwords.join("|"),"g");
+			var arr=txtMsg.value.match(reg);
+			alert("发现以下敏感词:\n"+arr);
+		});
+	</script>
+</body>
+</html>

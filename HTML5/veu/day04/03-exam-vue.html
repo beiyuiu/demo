@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件生命周期</h3>
+    <div id="app">
+       <parent></parent>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        Vue.component("parent",{
+            template:`
+              <div>
+                  hello world
+               </div>
+           `,
+            beforeCreate:function(){
+                console.log("1创建前");
+            },
+            created:function(){
+                console.log("2创建后");
+            },
+            beforeMount:function(){
+                console.log("3挂载前");
+            },
+            mounted:function(){
+                console.log("4挂载后");
+            },
+            beforeUpdate:function(){
+                console.log("5更新前");
+            },
+            updated:function(){
+                console.log("6更新后");
+            },
+            beforeDestroy:function(){
+                console.log("7销毁前");
+            },
+            destroyed:function(){
+                console.log("8销毁后");
+            }
+        });
+        var app  = new Vue({
+            el:"#app",
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/babel">
+    var MyButton = React.createClass({
+        handleClick:function(){
+            console.log('btn is clicked');
+            this.props.func();
+        },
+        render:function(){
+            return <button onClick={this.handleClick}>{this.props.btnName}</button>
+        }
+    })
+    var MyLogin = React.createClass({
+        funcLogin:function(){
+            alert('登录OK');
+        },
+        funcRegister:function(){
+            alert('注册OK');
+        },
+        render:function(){
+            return <div>
+                <MyButton btnName="登录" func={this.funcLogin}></MyButton>
+                <MyButton btnName="注册" func={this.funcRegister}></MyButton>
+            </div>
+        }
+    })
+
+    ReactDOM.render(
+        <MyLogin></MyLogin>,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>

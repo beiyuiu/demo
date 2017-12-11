@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<script src="7_ajax.js"></script>
+	<script>
+		function r1(){
+			return new Promise(function(resolve){
+				console.log("");
+				ajax("get","8_r1.php","","text")
+				.then(function(data){
+					console.log(data);
+					resolve();
+				});
+			})
+		}
+		function r2(){
+			return new Promise(function(resolve){
+				console.log("");
+				ajax("get","8_r2.php","","text")
+				.then(function(data){
+					console.log(data);
+					resolve();
+				});
+			})
+		}
+		function r3(){
+			return new Promise(function(resolve){
+				console.log("");
+				ajax("get","8_r3.php","","text")
+				.then(function(data){
+					console.log(data);
+					resolve();
+				});
+			})
+		}
+		function end(){console.log("结束");}
+		Promise.all([
+			r1(),r2(),r3()
+		]).then(end);
+	</script>
+ </body>
+</html>

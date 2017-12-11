@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="login.php" method="post" cellspacing=1px>
+		<h2>修改个人信息</h2>
+		<table width=500px border=1px>
+			<tr>
+				<td width=150px>姓名：</td>
+				<td><input type="text" placeholder="mary"></td>
+			</tr>
+			<tr>
+				<td>性别：</td>
+				<td><input type="radio" value="0" name="gender" id="g">
+					<label for="g">女士</label>
+					<input type="radio" value="1" name="gender" id="m">
+					<label for="m">男士</label>
+				</td>
+			</tr>
+			<tr>
+				<td>学历：</td>
+				<td>
+					<select name="" id="login.php">
+						<option value="0">其他</option>
+						<option value="1">专科</option>
+						<option value="2">本科</option>
+						<option value="3">硕士及以上</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>意向工作城市：</td>
+				<td>
+					<select name="" id="login.php" size=5 multiple >
+						<option value="0">深圳</option>
+						<option value="1">上海</option>
+						<option value="2">北京</option>
+						<option value="3">成都</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>个人描述：</td>
+				<td>
+					<textarea name="" id="" cols="30" rows="10"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="checkbox" name="gl" id="nm">
+				<label for="nm">不要公开我的个人信息</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				</td>
+				<td>
+					<button type="submit">保存</button>
+					<button type="reset">重填</button>
+				</td>
+			</tr>
+		</table>	
+	</form>
+</body>
+</html>

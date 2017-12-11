@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/babel">
+    var TestLifeCycle  = React.createClass({
+        componentWillMount:function(){
+            console.log('ing');
+            console.log(this.refs.myInput);
+        },
+    componentDidMount:function(){
+        console.log('done');
+        console.log(this.refs.myInput);
+    },
+    getInitialState:function(){
+        return {
+            userInput:''
+        }
+    },
+    handleChange:function(){
+        this.setState({userInput:this.refs.myInput.value})
+    },
+        componentWillUpdate:function(nextProps,nextState){
+            console.log('nextState',nextState);
+
+        },
+    componentDidUpdate:function(prevProps,prevState){
+        console.log('prevState',prevState);
+
+    },
+        render:function(){
+            return <div>
+                <input type="text" ref="myInput" onChange={this.handleChange}/>
+                <button>click</button>
+            </div>
+        }
+    })
+    ReactDOM.render(
+    <TestLifeCycle></TestLifeCycle>,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="00-common.js"></script>
+	<script>
+		function getXml(){
+			var xhr=createXhr();
+			xhr.open("get","03-php-xml.php",true);
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					var xmlDoc=xhr.responseXML;
+					var name=xmlDoc.getElementsByTagName("name")[0];
+					var age=xmlDoc.getElementsByTagName("age")[0];
+					var gender=xmlDoc.getElementsByTagName("gender")[0];
+					console.log("姓名："+name.innerHTML+"\n"+"性别："+gender.innerHTML+"\n"+"年龄："+age.innerHTML+"\n");
+				}
+			}
+			xhr.send(null);
+		}
+	</script>
+</head>
+<body>
+	<button onclick="getXml()">获取xml</button>
+</body>
+</html>

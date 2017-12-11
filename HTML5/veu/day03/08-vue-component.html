@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件生命周期</h3>
+    <div id="app">
+       <!--组件调用-->
+        <button @click="isShow = !isShow">显示否</button>
+       <my-component v-if="isShow"></my-component>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+       /**
+        *创建组件——生命周期
+        */
+               Vue.component("my-component",{
+                   template:`
+                    <div>
+                        <button @click="handleClick">clickMe</button>
+                        <h4>hello {{count}}</h4>
+                    </div>
+                   `,
+                   data:function(){
+                     return {count:0}
+                   },
+                   methods:{
+                       handleClick:function(){
+                           this.count++;
+                       }
+                   },
+                   beforeCreate:function(){
+                       console.log("1创建前");
+                   },
+                   created:function(){ console.log("2创建后");},
+                   beforeMount:function(){ console.log("3挂载前");},
+                   mounted:function(){ console.log("4挂载后");},
+                   beforeUpdate:function(){ console.log("5更新前");},
+                   updated:function(){ console.log("6更新后");},
+                   beforeDestroy:function(){ console.log("7销毁前");},
+                   destroyed:function(){ console.log("8销毁后");}
+               });
+       var exampleData = {
+           msg:"hello",
+           isShow:true
+        };
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+
+        });
+    </script>
+</body>
+</html>

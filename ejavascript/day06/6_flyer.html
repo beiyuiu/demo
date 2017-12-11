@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<script>
+		function Flyer(fname,speed){
+			this.fname=fname;
+			this.speed=speed;
+		}
+		Flyer.prototype.fly=function(){
+			console.log(
+				this.fname+"以时速"+this.speed+"飞行");
+		}
+		function Plane(fname,speed,score){
+			Flyer.call(this,fname,speed);
+			this.score=score;
+		}
+		function Bee(fname,speed,award){
+			Flyer.call(this,fname,speed);
+			this.award=award;
+		}
+		Plane.prototype.getScore=function(){
+			console.log(
+				"击落"+this.fname+"得"+this.score+"分");
+		}
+		Bee.prototype.getAward=function(){
+			console.log(
+				"击落"+this.fname+"得"+this.award+"奖励");
+		}
+		Object.setPrototypeOf(
+			Plane.prototype,Flyer.prototype);
+		Object.setPrototypeOf(Bee.prototype,Flyer.prototype);
+		var bee=new Bee("bee",50,"one life");
+		var f16=new Plane("F16",1000,10);
+		bee.fly();
+		bee.getAward();
+		f16.fly();
+		f16.getScore();
+	</script> 
+ </body>
+</html>

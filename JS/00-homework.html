@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script src="isRun.js"></script>
+  <script>
+  /*计算某年某月某一天是星期几*/
+  function calDate(){
+	//分三次从弹框输入年月日
+	var year =Number(prompt("year:"));
+	var month =Number(prompt("month:"));
+	var day =Number(prompt("day:"));
+	//计算从1900年开始，到输入年前一年共有多少天，进行累加
+	var totalDays=0;
+	var i=1900;
+	while(i<year){
+		if(isRun(i)){
+			//i年为闰年
+			totalDays+=366;
+		}else{
+			//为平年
+			totalDays+=365;
+		}
+		i++;
+	}
+	//计算从前年1月开始到输入月份的前一个月共多少天，进行累加
+	var m=1;
+	while(m<month){
+		switch (m){
+			case 1:
+			case 3:
+			case 5:
+			case 7:
+			case 8:
+			case 10:
+				totalDays+=31;
+				break;
+			case 4:
+			case 6:
+			case 9:
+			case 11:
+				totalDays+=30;
+				break;
+			case 2:
+				if(isRun(year)){
+					totalDays+=29;
+				}else{
+					totalDays+=28;
+				}
+				break;
+		}
+		m++;
+	}
+	//累加输入的日子
+	totalDays+=day;
+	//用累加的总天数，与7取余
+	var result =totalDays%7;
+	var show;
+	switch (result)
+	{
+		case 0:
+			show="日";
+			break;
+		case 1:
+			show="一";
+			break;
+		case 2:
+			show="二";
+			break;
+		case 3:
+			show="三";
+			break;
+		case 4:
+			show="四";
+			break;
+		case 5:
+			show="五";
+			break;
+		case 6:
+			show="六";
+			break;
+	}
+	console.log(year+"年"+month+"月"+day+"日是星期"+show);
+  }
+  </script>
+  <button onclick="calDate()">测试</button>
+ </body>
+</html>

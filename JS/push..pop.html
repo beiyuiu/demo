@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+<script>
+	function testPush(){
+		var arr=[10,20,30];
+		var len=arr.push(40);
+		console.log(arr);
+		console.log(len);
+	}
+	function testPop(){
+		var arr=[10,20,30];
+		var r1=arr.pop();
+		var r2=arr.pop();
+		console.log(arr);
+		console.log(r1);
+		console.log(r2);
+	}
+</script>  
+<button onclick="testPush()">testPush</button>
+<button onclick="testPop()">testPop</button>
+ </body>
+</html>

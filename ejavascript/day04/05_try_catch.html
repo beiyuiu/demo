@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var num=parseFloat(prompt("输入数字"));
+		var d=prompt("输入小数位数"); 
+		if(d>=0&&d<=20){
+		/*try{//可能出错的代码*/
+			var r=num.toFixed(d);
+			console.log(r);
+		}else{/*catch(err){//只有出错才执行*/
+			alert("小数位数必须介于0~20之间");
+			console.log("toFixed函数的小数位数参数必须介于0~20之间");
+			/*alert("出错了，请联系管理员");
+			console.log(String(err));*/
+		}
+		console.log("继续执行");
+	</script>
+</body>
+</html>

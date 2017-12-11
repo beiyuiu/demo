@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <button>按钮一</button>
+    <button>按钮二</button>
+    <p id="result"></p>
+    <script>
+        var w6 =new Worker("1.js");
+        w6.onmessage =function(e){result.innerHTML= e.data;}
+        w6.postMessage("计算的数值");
+    </script>
+
+</body>
+</html>

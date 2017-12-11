@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        svg{background: #ddd;}
+        body{text-align: center;}
+    </style>
+</head>
+<body>
+<h1>SVG事件监听</h1>
+<svg id="s2" width="500" height="400">
+    <!--<rect id="r2" width="30" height="1" x="235" y="350" fill="#faa" fill-opacity="0.3" stroke="#800" stroke-opacity="0.3"></rect>-->
+</svg>
+<script>
+  /*  r2.onmouseover = function(){
+        this.setAttribute("fill-opacity",1);
+        this.setAttribute("stroke-opacity",1);
+    }
+    r2.onmouseout = function(){
+        this.setAttribute("fill-opacity",0.3);
+        this.setAttribute("stroke-opacity",0.3);
+    }
+    var timer =setInterval(function(){
+        var h=r2.getAttribute("height");
+        var y=r2.getAttribute("y");
+        h+=20;
+        y-=20;
+        r2.setAttribute("height",h);
+        r2.setAttribute("y",y);
+       if(h>500){
+           clearInterval(timer);
+        }
+    },200);*/
+    /*var htnl = `<rect width="50" height="50" x="0" y="0"></rect>>`;
+    s2.innerHTML = html;
+    var rect =*/
+    var data = [
+        {"labell":"部门1","value":300},
+        {"labell":"部门2","value":310},
+        {"labell":"部门3","value":200},
+        {"labell":"部门4","value":190},
+        {"labell":"部门5","value":150}
+    ];
+    for(var i=0;i<data.length;i++){
+        var dept =data[i];
+        var rect =document.createElementNS("http://www.w3.org/2000/svg","rect");
+        rect.setAttribute("width",50);
+        rect.setAttribute("height",dept.value);
+        rect.setAttribute("y",400-dept.value);
+        rect.setAttribute("x",100*i+50);
+        rect.setAttribute("fill",rc());
+        s2.appendChild(rect);
+    }
+    function rc(){
+        var r=Math.floor(Math.random()*256);
+        var g=Math.floor(Math.random()*256);
+        var b=Math.floor(Math.random()*256);
+        return `rgb(${r},${g},${b})`;
+    }
+</script>
+</body>
+</html>

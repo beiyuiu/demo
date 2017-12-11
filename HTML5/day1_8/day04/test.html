@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h2>探照灯</h2>
+<canvas id="canvas">浏览器版本太低，请更新</canvas>
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    canvas.width="500";
+    canvas.height="400";
+    function windowTocanvas(canvas,x,y){
+        var canvasBox =canvas.getBoundingClientRect();
+        var canvasX=x-canvasBox.left;
+        var canvasY=y-canvasBox.top;
+        return {x:canvasX,y:canvasY};
+    }
+    ctx.beginPath();
+    ctx.fillStyle="#000";
+    ctx.fillRect(0,0,500,500);
+    canvas.addEventListener("mousemove",function(e){
+        ctx.fillStyle="#000";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.save();
+        var l=windowTocanvas(canvas, e.clientX, e.clientY);
+        ctx.beginPath();
+        ctx.arc(l.x, l.y,80,0,2*Math.PI,false);
+        ctx.clip();
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle="#058";
+        ctx.font="bold 100px Arial";
+        ctx.textAlign="center";
+        ctx.textBaseline="middle";
+        ctx.fillText("Canvas照明灯",canvas.width/2,canvas.height/2);
+        ctx.restore();
+    });
+</script>
+</body>
+</html>

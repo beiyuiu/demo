@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        canvas{border:1px solid red;}
+
+    </style>
+</head>
+<body>
+<h2>播放器</h2>
+<canvas id="c2"></canvas>
+
+<script>
+    var ctx=c2.getContext("2d");
+    var progress =0;
+    var p1=new Image();
+    p1.src="img/bg.jpg";
+    p1.onload=function(){
+        progress+=25;
+        if(progress==100){
+            startDraw();
+        }
+    }
+    var p2=new Image();
+    p2.src="img/disc.png";
+    p2.onload=function(){
+        progress+=25;
+        if(progress==100){
+            startDraw();
+        }
+    }
+    var p3=new Image();
+    p3.src="img/play.png";
+    p3.onload=function(){
+        progress+=25;
+        if(progress==100){
+            startDraw();
+        }
+    }
+    var p4=new Image();
+    p4.src="img/pause.png";
+    p4.onload=function(){
+        progress+=25;
+        if(progress==100){
+            startDraw();
+        }
+    }
+    function startDraw(){
+        var w=p1.width;
+        var h=p1.height;
+        c2.width=w;
+        c2.height=h;
+        ctx.drawImage(p1,0,0);
+        ctx.beginPath();
+        ctx.arc(w/2,h/2,80,0,2*Math.PI);
+        ctx.fill();
+        ctx.drawImage(p2,w/2-50,h/2-50);
+        ctx.drawImage(p3,w/2-50,h-100,100,100);
+
+    }
+    document.getElementById("c2").onmousedown=function(){
+        var w=p1.width;
+        var h=p1.height;
+        c2.width=w;
+        c2.height=h;
+        ctx.drawImage(p1,0,0);
+        ctx.beginPath();
+        ctx.arc(w/2,h/2,80,0,2*Math.PI);
+        ctx.fill();
+        ctx.drawImage(p2,w/2-50,h/2-50);
+        ctx.drawImage(p4,w/2-50,h-100,100,100);
+    };
+</script>
+</body>
+</html>

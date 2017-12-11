@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+ <script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	function showText(){
+		var elem=$("d1");
+		console.log(elem.innerHTML);
+	}
+	function setText(){
+		$("d1").innerHTML="我的第一个$";
+	}
+	
+ </script>
+	<div id="d1">Hello World</div>
+	<button onclick="showText()">获取值</button>
+	<button onclick="setText()">赋值</button>
+ </body>
+</html>

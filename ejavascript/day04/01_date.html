@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="ajax.js"></script>
+	<script>
+		var now=new Date();
+		var birth=new Date("1983/12/26");
+		console.log(now);
+		console.log(birth);
+		ajax("get","01_date.php","","text")
+		.then(function(s){
+			var now_from_server=s;
+			now_from_server=new Date(s*1000);
+			console.log(now_from_server);
+		})
+	</script>
+</body>
+</html>

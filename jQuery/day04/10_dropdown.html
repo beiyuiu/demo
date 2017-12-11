@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>...</title>
+  <link rel="stylesheet" href="my-ui/my-ui.css">
+  <style>
+	#nav{
+		
+		list-style:none;
+	}
+	#nav li{
+		display:inline-block;
+		float:left;width:150px;
+	}
+  </style>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="my-ui/my-ui.js"></script>
+ </head>
+  
+ <body>
+  <h1>下拉菜单</h1>
+  <ul id="nav">
+  <li>
+  <div class="dropdown">
+    <a data-trigger="dropdown" href="#" class="dropdown-trigger">Dropdown</a>
+    <ul class="dropdown-menu fade">
+	    <li class="menu-item"><a href="#">Action</a></li>
+      <li class="menu-item"><a href="#">Another action</a></li>
+      <li class="menu-item"><a href="#">Something else here</a></li>
+	    <li><hr></li>
+      <li class="menu-item"><a href="#">Separated link</a></li>
+    </ul>
+  </div>
+  </li>
+ <li>
+  <div class="dropdown">
+    <a data-trigger="dropdown" href="#" class="dropdown-trigger">Dropdown</a>
+    <ul class="dropdown-menu fade">
+	    <li class="menu-item"><a href="#">Action</a></li>
+      <li class="menu-item"><a href="#">Another action</a></li>
+      <li class="menu-item"><a href="#">Something else here</a></li>
+	    <li><hr></li>
+      <li class="menu-item"><a href="#">Separated link</a></li>
+    </ul>
+  </div>
+  </li>
+  </ul>
+	<script>
+      /*$("[data-trigger=dropdown]").parent()
+        .hover(function(){
+            $(this)
+				.children().last()
+				.toggleClass("in")
+        })*/
+	</script>
+ </body>
+</html>

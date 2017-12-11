@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件生命周期</h3>
+    <div id="app">
+       <xiong-da></xiong-da>
+       <xiong-er></xiong-er>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var bus = new Vue();
+       Vue.component("xiong-da",{
+           template:`
+                <div>
+                    <h4>发送数据</h4>
+                    <button @click="setData">熊</button>
+                </div>
+           `,
+           methods:{
+               setData:function(){
+                   bus.$emit("cutEvent","皮卡丘，使出十万伏特");
+               }
+           }
+       });
+       Vue.component("xiong-er",{
+           template:`
+                <div>
+                    <h4>接收数据</h4>
+                </div>
+           `,
+           mounted:function(){
+               bus.$on("cutEvent",function(msg){
+                   alert("熊大看到光头强，说道："+msg);
+               })
+           }
+       });
+        new Vue({el:"#app"})
+    </script>
+</body>
+</html>

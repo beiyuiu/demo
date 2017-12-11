@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>WebSocket客户端</h1>
+    <button id="btn">创建连接</button>
+    <button id="btn1">断开连接</button>
+    <script>
+        var socket =null;
+        btn.onclick = function(){
+            socket = new WebSocket("ws://127.0.0.1:9001");
+            scoket.send("fhdsgf");
+            //接收服务器数据
+            socket.onmessage = function (e){
+                console.log("服务器返回的消息"+e.data);
+            }
+        }
+        btn1.onclick = function(){
+            socket.close();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+<script>
+	/*function hm1(){
+		var arr=[63,35,52,35,84];
+		var max=arr[0];	
+		for(var i=1;i<arr.length;i++){
+			if(max<arr[i]){
+				max=arr[i];
+			}
+		}
+		console.log(max);
+	}
+	hm1();*/
+	/*function hm2(){
+		var num=[15,54,13,25,45,32,16,15,45];
+		var input=Number(prompt("请输入一个数字"));
+		var arr=[];
+		for(var i=0;i<num.length;i++){
+			if(input==num[i]){
+				arr[arr.length]=i;
+			}
+		}
+		if(arr.length==0){
+			console.log("不存在");
+		}else{
+			console.log(arr);
+		}
+		
+	}
+	hm2();*/
+	/*function num(){
+		var array=[];
+		do{
+			var input=prompt("请输入一个数字");
+			if(input!="exit"){
+				array[array.length]=parseInt(input);
+			}
+			
+		}while(input!="exit");
+		console.log(array);
+		var max=array[0];
+		for(var i=1;i<array.length;i++){
+			if(max<array[i]){
+				max=array[i];
+			}
+		}
+		console.log(max);
+	}
+	num();*/
+	/*冒泡排序*/
+	function pao(){
+		var num=[12,52,32,1,5,62,15];
+		console.log(num);
+		for(var i=1;i<=num.length-1;i++){
+			for(var j=0;j<=num.length-1-i;j++){
+				if(num[j]>num[j+1]){
+					num[j]^=num[j+1];
+					num[j+1]^=num[j];
+					num[j]^=num[j+1];
+				}
+			}
+		}
+		console.log(num);
+	}
+	pao();
+</script>  
+ </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/babel">
+   var MyCompontent = React.createClass({
+       handleClick:function(){
+            //获取到ref为myInput的元素中用户输入的内容
+          console.log(this.refs.myInput.value);
+       },
+       render:function(){
+            return <div>
+            <input type="text" placeholder="plz input" ref="myInput"/>
+            <button onClick={this.handleClick}>clickMe</button>
+            </div>
+        }
+    })
+
+    ReactDOM.render(
+    <MyCompontent></MyCompontent >,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>

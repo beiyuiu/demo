@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        #c2{background: #aaaaaa;}
+    </style>
+</head>
+<body>
+<canvas id="c2" width="500" height="400">你的浏览器版本过低，请更新</canvas>
+<script>
+    /*获取画布；获取画笔；开始新路径；将画笔移动到指定点*/
+    var c2=document.getElementById("c2");
+    var ctx=c2.getContext("2d");
+    function closeMouth(){
+        ctx.beginPath();
+        ctx.arc(250,200,50,0,2*Math.PI);
+       ctx.lineTo(250,210);
+        ctx.fillStyle="yellow";
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(260,170,18,0*Math.PI/180,360*Math.PI/180);
+        ctx.fillStyle="#fff";
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(270,170,5,0*Math.PI/180,360*Math.PI/180);
+        ctx.fillStyle="#000";
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(320,200,10,0*Math.PI/180,360*Math.PI/180);
+        ctx.fillStyle="#f00";
+        ctx.fill();
+        ctx.stroke();
+    }
+    //closeMouth();
+    function openMouth(){
+        ctx.beginPath();
+        ctx.arc(250,200,50,25*Math.PI/180,345*Math.PI/180);
+        ctx.lineTo(250,200);
+        ctx.closePath();
+        ctx.fillStyle="yellow";
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(260,170,18,0*Math.PI/180,360*Math.PI/180);
+        ctx.fillStyle="#fff";
+        ctx.fill();
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(270,170,5,0*Math.PI/180,360*Math.PI/180);
+        ctx.fillStyle="#000";
+        ctx.fill();
+        ctx.stroke();
+    }
+    //openMouth();
+    var idx=0;
+    var timer=setInterval(function(){
+        ctx.clearRect(0,0,500,400);
+        idx++;
+        if(idx%2==0){
+            openMouth();
+        }else{
+            closeMouth();
+        }
+    },200);
+</script>
+</body>
+</html>

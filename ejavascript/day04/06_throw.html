@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function round(num,d){
+			if(!isNaN(num)&&!isNaN(d)){
+				num*=Math.pow(10,d);
+				num=Math.round(num);
+				return num/Math.pow(10,d);
+			}else
+				throw new Error("必须输入数字");
+		}
+		var num=prompt("输入一个数字");
+		var d=prompt("输入小数位数");
+		var r=round(num,d);
+		if(!isNaN(num)&&!isNaN(d)){
+			console.log(r);
+		}else{
+			alert("必须输入数字");
+		}
+		console.log("程序正常执行");
+	</script>
+</body>
+</html>

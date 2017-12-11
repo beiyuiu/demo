@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        div{background: #ddd;}
+    </style>
+</head>
+<body>
+<div id="box" style="width: 600px;height: 400px;"></div>
+<script src="lib/echarts.min.js"></script>
+<script>
+    /*var option={
+        title:{text:"销售统计数据"},
+        tooltip:{},
+        legend:{data:["数据来源网络"]},
+        xAxis:{data:["Android","IOS","华为","other"]},
+        yAxis:{},
+        series:[{name:"销售量",type:"bar",data:[500,200,360,100]}]
+    };
+    var myChart = echarts.init(box);
+    myChart.setOption(option);*/
+    var option={
+        title:{text:"销售统计数据"},
+        series:[{name:"销售量",type:"pie",radius:"60%",data:[{value:500,name:"Android"},{value:200,name:"IOS"},{value:360,name:"华为"},{value:100,name:"other"}]}]
+    };
+    var myChart = echarts.init(box);
+    myChart.setOption(option);
+</script>
+</body>
+</html>

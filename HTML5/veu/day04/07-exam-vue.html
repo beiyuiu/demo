@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件生命周期</h3>
+    <div id="app">
+       <parent></parent>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+       Vue.component("parent",{
+           methods:{
+               getData:function(msg){
+                   alert ("父组件接收了子组件的数据 :"+msg);
+               }
+           },
+           template:`
+           <div>
+                <h3>父组件</h3>
+                <child @dataEvent="getData"></child>
+           </div>
+           `
+       });
+       Vue.component("child",{
+            template:`
+                <div>
+                    <h3>子组件</h3>
+                    <button @click="setData()">点击</button>
+                </div>
+            `,
+           methods:{
+               setData:function(){
+                   this.$emit("dataEvent","十点半见风使舵");
+               }
+           }
+       });
+        new Vue({el:"#app"});
+    </script>
+</body>
+</html>

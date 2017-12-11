@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>复合组件</h3>
+    <div id="app">
+       <!--组件调用-->
+        <my-article></my-article>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+       //复合组件：article[title/detail]
+       /**创建title
+       *创建detail
+        * 创建article{复合组件}
+        */
+               Vue.component("my-title",{
+                   template:`<h4>静夜思</h4>`
+               });
+               Vue.component("my-detail",{
+                   template:`<p>床前明月光，低头思故乡</p>`
+               });
+               Vue.component("my-article",{
+                   template:`
+                    <div>
+                        <my-title></my-title>
+                        <my-detail></my-detail>
+                    </div>
+                   `
+               });
+        var exampleData = {
+           msg:"hello",
+        };
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+
+        });
+    </script>
+</body>
+</html>

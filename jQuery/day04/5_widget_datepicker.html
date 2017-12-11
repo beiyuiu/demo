@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+ </head>
+ <body>
+  <h1>jQueryUI：Widgets —— Datepicker</h1>
+	<p>Date: <input type="text" id="datepicker"></p>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/jquery-ui-i18n.js"></script>
+  <script>
+	$("#datepicker").datepicker({
+		changeYear:true,
+		changeMonth:true,
+		maxDate:"-18Y",
+		minDate:"-65Y",
+		dateFormat:"yy年mm月dd日",
+		showOn:"button",
+		buttonImage:"css/images/calendar.gif",
+		buttonImageOnly:true,
+		
+	});
+	$( "#datepicker" ).datepicker( "option",
+    $.datepicker.regional[ 'zh-CN']); 
+  </script>
+	
+ </body>
+</html>

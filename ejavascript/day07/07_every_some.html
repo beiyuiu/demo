@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+     var arr1=[1,2,3,4,5];
+     var arr2=[2,4,6,4,2];//练习8分钟
+     //判断哪个数组全由偶数组成:
+     console.log(
+      arr1.every(function(elem){
+        return elem%2==0;
+      }),//false
+      arr2.every(function(elem){
+        return elem%2==0;
+      })//true
+     );
+     //判断哪个数组是升序排列:
+     console.log(
+      arr1.every(function(elem,i,arr){
+        return i<arr.length-1?elem<=arr[i+1]:true;
+      }),//true
+      arr2.every(function(elem,i,arr){
+        return i<arr.length-1?elem<=arr[i+1]:true;
+      }) //false
+     );
+  </script>
+ </body>
+</html>

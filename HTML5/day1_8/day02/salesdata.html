@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        canvas{background: #ddd}
+    </style>
+</head>
+<body>
+<canvas width="500" height="400" id="c2"></canvas>
+<script src="jquery.js"></script>
+<script>
+    var c2 = document.getElementById("c2");
+    var ctx = c2.getContext("2d");
+    var w = 500;
+    var h = 400;
+    var pd = 25;
+    ctx.strokeRect(pd,pd,w-2*pd,h-2*pd);
+    $.ajax({
+        type:"get",
+        url:"salesdata.php",
+        success:function(data){
+           ctx.fillRect(50,375,25,data[0].value);
+           ctx.fillRect(100,375,25,data[1].value);
+           ctx.fillRect(150,375,25,data[2].value);
+           ctx.fillRect(200,375,25,data[3].value);
+
+        },
+        error:function(){
+            alert("网络故障请检查");
+        }
+    });
+</script>
+</body>
+</html>

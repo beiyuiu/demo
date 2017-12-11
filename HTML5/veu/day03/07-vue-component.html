@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>复合组件</h3>
+    <div id="app">
+       <!--组件调用-->
+        <my-test></my-test>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        Vue.component("label-name",{
+            template:`<label for="uname">用户名</label>`
+        });
+        Vue.component("input-name",{
+            template:`<input type="text" id="uname" placeholder="请输入用户名"/>`
+        });
+        Vue.component("label-pwd",{
+            template:`<label for="pwd">密码</label>`
+        });
+        Vue.component("input-pwd",{
+            template:`<input type="password" id="pwd" placeholder="请输入密码"/>`
+        });
+        Vue.component("button-login",{
+            template:`<input type="button" value="login"/>`
+        });
+        Vue.component("button-register",{
+            template:`<input type="button" value="register"/>`
+        });
+        Vue.component("my-test",{
+            template:`
+                <form>
+                    <label-name></label-name>
+                    <input-name></input-name>
+                    <br/>
+                    <label-pwd></label-pwd>
+                    <input-pwd></input-pwd>
+                    <br/>
+                    <button-login></button-login>
+                    <button-register></button-register>
+                </form>
+            `
+        });
+        var exampleData = {
+           msg:"hello",
+        };
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+
+        });
+    </script>
+</body>
+</html>

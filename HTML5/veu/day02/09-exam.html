@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+        编号：<input type="text" v-model="message1" @keyup.13="createUser"/>
+        姓名：<input type="text" v-model="message2" @keyup.13="createUser"/>
+        年龄：<input type="text" v-model="message3" @keyup.13="createUser"/>
+        <table id="tb1" width="80%" border="1">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(user,idx) in users">
+                    <td>{{user.uid}}</td>
+                    <td>{{user.uname}}</td>
+                    <td>{{user.age}}</td>
+                    <td><button @click="removeUser(idx)">X</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var exampleData = {
+            message1:"",
+            message2:"",
+            message3:"",
+            users:[
+                {uid:1,uname:"tom",age:28},
+                {uid:2,uname:"jerry",age:29},
+                {uid:3,uname:"james",age:31}
+            ]
+        }
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+            methods:{
+                createUser:function(){
+                    this.users.push({uid:this.message1,uname:this.message2,age:this.message3});
+                    //清除上次输入的内容
+                    this.message1="";
+                    this.message2="";
+                    this.message3="";
+                },
+                removeUser:function(idx){
+                    this.users.splice(idx,1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

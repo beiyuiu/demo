@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var str="Hello";
+		//给str10块钱
+		str.money=10;//new String(str).money=10
+		/*new String()没有变量保存，所以自动释放*/
+		console.log(str.money);//undefined
+			//new String(str).money
+			//已经不是刚刚的new String
+		//留住money
+		var str=new String("Hello");//创建新的对象，保存在变量中
+		str.money=10;//new String()不会被释放，因为有变量一直在引用
+		console.log(str.money);//10
+	</script>
+</body>
+</html>

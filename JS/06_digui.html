@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<script>
+	/**
+	*计算数字n的阶乘
+	*边界条件  n为1时返回1
+	*递归前进   当n大于1时，继续调用函数n*f(n-1)
+	*递归返回  n*f(n-1)返回
+	*/
+	function f(n){
+		//是否到达边界条件，到达返回1
+		/*if(n==1){
+			return 1;
+		}else{
+			return n*f(n-1);
+		}*/
+		return n==1 ? 1:n*f(n-1);
+	}
+	console.log(f(10));
+	</script>
+ </body>
+</html>

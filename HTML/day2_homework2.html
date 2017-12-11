@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+	.d1{
+		border:10px red;
+		width:100px;
+		height:100px;
+		margin-left:47px;
+	}
+	.d2{
+		border:1px;
+		width:240px;
+		height:50px;
+		margin-left:0px;
+	}
+	.d2 .d3{
+		border:1px;
+		width:50px;
+		height:20px;
+	}
+	.d2 .d4{
+		border:1px;
+		width:250px;
+		height:50px;
+		margin-left:50px;
+		margin-top:-25px;
+	}
+	.d2 .d5{
+		border:1px;
+		width:150px;
+		margin-left:230px;
+		margin-top:-40px;
+	}
+  </style>
+ </head>
+ <body>
+  <form action="login.php" method="post" enctype="multipart/form-data">
+  <h2>增加管理员</h2>
+  <p>姓名： <input type="text" name="uname"> 10个字符以内</p>
+  <p>密码： <input type="password" name="upwd"> 10个字符以内</p>
+  <p>性别：<input type="radio" name="gender" value="1">男士
+		<input type="radio" name="gender" value="0">女士
+  </p>
+  <div class=d2>
+	<div class=d3>角色：</div><div class=d4><input type="checkbox" name="gu" value="1">超级管理员<br><input type="checkbox" name="gu" value="1">账单管理员
+	</div>
+	<div class=d5>至少选择一个角色</div>
+  </div>
+  <p>
+	头像：<input type="file" name="选择文件">
+  </p>
+ <div class="d1">
+ <button type="submit">保存</button>
+ <button type="reset">重填</button>
+ </div>
+  </form>
+ </body>
+</html>

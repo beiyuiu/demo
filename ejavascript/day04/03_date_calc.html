@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+    //入职时间: 
+    var hiredate=new Date("2012/6/30");
+    /*计算合同到期时间enddate:*/
+    //将hiredate复制到enddate
+    var enddate=new Date(hiredate);
+    //将enddate+3年
+    enddate.setFullYear(enddate.getFullYear()+3);
+    /*计算续签时间renewdate:*/
+    //将enddate复制到renewdate中
+	var renewdate=new Date(enddate);
+    //将renewdate-1月
+	renewdate.setMonth(renewdate.getMonth()-1);
+    //如果renewdate是周末，就再提前到周五
+	if(renewdate.getDay()==6)
+		renewdate.setDate(renewdate.getDate()-1);
+	else if(renewdate.getDay()==0)
+		renewdate.setDate(renewdate.getDate()-2);
+    console.log(hiredate);
+    console.log(enddate);
+    console.log(renewdate);
+  </script>
+ </body>
+</html>

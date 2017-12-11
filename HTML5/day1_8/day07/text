@@ -1,0 +1,25 @@
+进程：操作系统分配内存的单位
+线程：进程内部，用于执行代码
+线程并发：操作系统中所有的线程宏观上“同时执行”，微观上“依次交替执行”
+chrome中线程的模式：请求资源—6个线程；运行代码/渲染内容—1线程
+1、将所有的js放在body最后一个元素后
+2、创建新的线程，由它执行耗时js任务，UI主线程执行后续HTML渲染
+<button></button>
+<script>
+    var w =new Worker("1.js");
+</script>
+<buton></button>
+缺陷：浏览器不允许worker线程操作DOM&BOM对象
+原因：浏览器只允许UI主线程操作DOM&BOM，若多个Worker线程同时操作DOM结构，页面混乱
+Worker线程可以给UI主线程发送数据
+    UI主线程：
+        var w6 =new Worker("1.js");
+        w6.onmessage =function(e){e.data}
+    Worker线程：
+        postMessage(stringMsg);
+UI线程可以给Worker主线程发送数据
+     UI主线程：
+            var w6 =new Worker("1.js");
+            w6. postMessage (stringMsg)
+        Worker线程：
+           onmessage=function(e){e.data};

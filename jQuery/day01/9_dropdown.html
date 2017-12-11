@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>...</title>
+  <style>
+		.dropdown{width:64px; height:20px;}
+    .dropdown a{
+			text-decoration:none; 
+			color:#000;
+			display:inline-block;
+		}
+		.dropdown>a{ 
+			border:1px solid #000; padding:6px 12px;
+		}
+		.dropdown-menu{
+			/*display:none;*/
+			height:0;
+			transition:all .5s linear;
+			opacity:0;
+			overflow:hidden;
+			width:200px;
+			list-style:none; 
+			margin:0; 
+			padding:0;
+			border:1px solid #aaa;
+			box-shadow:5px 5px 6px #000;
+		}
+		.dropdown-menu a{padding:6px 20px; width:160px}
+		.dropdown-menu li:hover{background:#ddd}
+  </style>
+ </head>
+  
+ <body>
+  <h1>下拉菜单</h1>
+  <div class="dropdown">
+    <a data-trigger="dropdown" href="#">Dropdown</a>
+    <ul class="dropdown-menu">
+	    <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+	    <li><hr></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+  </div>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+		//先实现单击按钮下拉
+		/**$("[data-trigger=dropdown]").click(function(e){
+			var $a=$(this);
+			var $menu=$a.next();
+			*if($menu.css("display")=="block"){
+				$menu.css("display","none");
+			}else{
+				$menu.css("display","block");
+			}
+			if($menu.css("height")=="153px"){
+				$menu.css({height:0,opacity:0});
+				//$menu.css("opacity",0);
+
+			}else{
+				$menu.css({height:153,opacity:1});
+				//$menu.css("opacity",1);
+			}
+		})*/
+    //再实现鼠标移入下拉
+		$("[data-trigger=dropdown]").parent().mouseover(function(e){
+			var $div=$(this);
+			var $menu=$div.children().last();//.children().last()——当前元素最后一个子元素
+			$menu.css({height:153,opacity:1});
+		})
+		.mouseout(function(e){
+			var $div=$(this);
+			var $menu=$div.children().last();
+			$menu.css({height:0,opacity:0});
+		});
+	</script>
+ </body>
+</html>

@@ -1,0 +1,17 @@
+[
+	{
+		"uname":"dingding",
+		"upwd":"123",
+		"gender":"女"
+	},
+	{
+		"uname":"dangdang",
+		"upwd":"1235",
+		"gender":"女"
+	},
+	{
+		"uname":"huahua",
+		"upwd":"1234",
+		"gender":"女"
+	}
+]

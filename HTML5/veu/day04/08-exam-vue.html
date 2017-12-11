@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件生命周期</h3>
+    <div id="app">
+       <parent></parent>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+       Vue.component("parent",{
+           data:function(){
+              return {
+                      isUserLogin:false,
+                      list:[10,20,32,542,41,5]
+                      };
+           },
+           methods:{
+               getData:function(msg){
+                   if(this.isUserLogin){
+                       this.isUserLogin = msg;
+                   }else{
+                       this.isUserLogin = !msg;
+                   }
+               }
+           },
+           template:`
+           <div>
+                <h3>父组件</h3>
+                <ul v-if="isUserLogin">
+                    <li v-for="item in list">{{item}}</li>
+                </ul>
+                <child @dataEvent="getData"></child>
+           </div>
+           `
+       });
+       Vue.component("child",{
+            template:`
+                <div>
+                    <h3>子组件</h3>
+                    <button @click="setData()">点击</button>
+                </div>
+            `,
+           methods:{
+               setData:function(){
+                   this.$emit("dataEvent",false);
+               }
+           }
+       });
+        new Vue({
+            el:"#app"
+        });
+    </script>
+</body>
+</html>

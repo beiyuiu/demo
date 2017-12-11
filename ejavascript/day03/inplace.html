@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function getNum(max,min,n){
+			var t=[];
+			var hash=[];//创建一个对象
+			for(var i=0;i<n;i++){
+				//生成一个随机数
+				var q=parseInt(Math.random()*(max-min+1)+min);
+				if(hash[q]==undefined){
+					hash[q]==1;
+					t.push(q);
+				}else	i--;
+				
+			}
+			return console.log(t);
+		}
+		getNum(10,1,5);
+	</script>
+</body>
+</html>

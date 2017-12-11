@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <button  @click="add">变色</button>
+        <br/>
+        <hr/>
+        <h3  v-change-background-color="myBgColor">自定义指令</h3>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var exampleData = {
+           msg:"hello",
+            myBgColor:"#ff0"
+        }
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+            methods:{
+                add:function(){
+                    this.myBgColor = this.colorld();
+                },
+                colorld:function(){
+                    var r = Math.floor(Math.random()*256);
+                    var g = Math.floor(Math.random()*256);
+                    var b = Math.floor(Math.random()*256);
+                    return `rgb(${r},${g},${b})`;
+                }
+            },     //保存自定义方法
+            directives:{        //保存自定义指令
+                changeBackgroundColor:{            //自定义指令change
+                    bind:function(el,bindings){
+                        console.log("绑定成功");
+                        el.style.backgroundColor = bindings.value;
+                    },       //更新数据
+                    update:function(el,bindings){
+                        console.log("数据变更");
+                        el.style.backgroundColor = bindings.value;
+                    }
+
+                }
+            }
+        });
+    </script>
+</body>
+</html>

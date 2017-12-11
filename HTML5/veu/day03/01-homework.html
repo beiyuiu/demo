@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <form>
+        uname <input type="text" v-model="newUser.uname"/><br/>
+        age <input type="text" v-model="newUser.age"/><br/>
+        phone <input type="text" v-model="newUser.phone"/><br/>
+        <input type="button" value="create" @click="createUser"/>
+    </form>
+    <table border="1" width="80%">
+        <thead>
+            <tr>
+                <th>用户名</th>
+                <th>年龄</th>
+                <th>电话</th>
+                 <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item,idx) in users">
+                <td>{{item.uname}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.phone}}</td>
+                <td><button @click="removeUser(idx)">delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var exampleData = {
+            newUser:{uname:"",age:0,phone:0},
+            users:[
+                {uname:"tom",age:19,phone:12156}
+            ]
+        }
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+            methods:{
+                createUser:function(){
+                    this.users.push(this.newUser);
+                    //清除上次输入的内容,创建一个新对象
+                    this.newUser = {uname:"",age:0,phone:""};
+                },
+                removeUser:function(idx){
+                    this.users.splice(idx,1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

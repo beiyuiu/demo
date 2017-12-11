@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="ajax.js"></script>
+</head>
+<body>
+	<script>
+//		var str="No zuo no die,No can no bibi";
+//		var arr=str.match(/no/ig);
+//		console.log(arr);
+//		var st="对酒当歌,人生几何。路问酒家何处寻，牧童遥指杏花村。";
+//		var arr=st.match(/酒/g);
+//		console.log(arr);
+	//用ajax请求sina.html
+	ajax("get","sina.html","","text")
+	.then(function(html){//onreadystatechange
+	//查找HTML中所有的有效的http连接
+		var as=html.match(/<a[^>]*href="http[^"]+"/ig);
+		for(var i=0;i<as.length;i++){
+			var index=as[i].indexOf("href");
+			as[i]=as[i].slice(index+6,-2+1);
+		console.log(as[i]);
+		}
+	})
+	</script>
+</body>
+</html>

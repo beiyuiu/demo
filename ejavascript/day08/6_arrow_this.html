@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<button id="btn">click me!</button>
+	<button id="btn">click me!</button>
+	<button id="btn">click me!</button>
+	<button id="btn">click me!</button>
+	<button id="btn">click me!</button>
+	<script>
+		var Bob={
+			sname:"鲍勃",
+			friends:["Jack","Rose","Tom","Jerry"],
+			/*intr(){
+				this.friends.forEach(function(friend){
+					console.log(this.sname+"认识"+friend);
+				}.bind(this));*/
+			intr(){
+				this.friends.forEach(friend=>
+					console.log(this.sname+" 认识 "+friend)
+				);
+			}
+		}
+		Bob.intr();
+
+		/*var btns=document.getElementsByTagName("button");
+		for(var i=0;i<btns.length;i++){
+			btns[i].onmouseover=function(){
+				this.style.background="Yellow";
+			};
+			btns[i].onmouseout=function(){
+				this.style.background="";
+			};
+			
+		}*/
+		function btn(){
+		this.onmouseover=()=>
+				//console.log("进入button");
+				this.style.background="Yellow"
+				
+		this.onmouseout=()=>
+			//console.log("移出button");
+				this.style.background="";
+			
+		}
+		btn();
+	</script>  
+ </body>
+</html>

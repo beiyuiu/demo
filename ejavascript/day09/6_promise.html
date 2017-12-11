@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="../ajax.js"></script>
+	<script>
+		function conn(){
+			return new Promise(function(resolve,reject){
+				ajax("get","5-1-conn.php","","text")
+				.then(text=>{
+					var r=Math.random();
+					if(r>0.2){
+						console.log(text);
+						resolve();
+					}else{
+						reject();
+					}
+				});
+			});
+		}
+		function query(callback){
+			return new Promise(function(resolve,reject){
+				ajax("get","5-2-query.php","","text")
+				.then(text=>{
+					var r=Math.random();
+					if(r>0.2){
+						console.log(text);
+						resolve();
+					}else
+						reject("请求出错");
+				});
+			});
+		}
+		function response(callback){
+			return new Promise(function(resolve,reject){
+				ajax("get","5-3-response.php","","text")
+				.then(text=>{
+					var r=Math.random();
+					if(r>0.2){
+						console.log(text);
+						resolve();
+					}else
+						reject("响应出错");
+				});
+			});
+		}
+		function end(){
+			console.log("操作一波");
+		}
+		conn()
+		.then(query)
+		.then(response)
+		.then(end)
+		.catch(
+			function(err){
+				console.log(err);
+		});
+	</script>
+</body>
+</html>

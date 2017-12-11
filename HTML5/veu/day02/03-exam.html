@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .active{color: red;}
+        .page{list-style: none}
+        .page li{
+            float: left;
+            padding: 5px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            background: #eee;
+            border-radius: 2px;
+            width: 23px;
+            text-align: center;
+        }
+        .page li a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h3>分页条</h3>
+        <ul class="page">
+            <li v-for="n in pageCount"><a href="#" :class="activeNumber==n?'active':''">{{n}}</a></li>
+        </ul>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var exampleData = {
+            pageCount:10,
+            activeNumber:3
+        };
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+        });
+    </script>
+</body>
+</html>

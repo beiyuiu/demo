@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="number" id="inputNum"/>
+<button id="bt">开始计算</button>
+<hr/>
+<p id="result">
+    运算中...
+</p>
+<script>
+    bt.onclick =function(){
+        var val =inputNum.value;
+        var w =new Worker("2.js");
+        w.postMessage(val);
+        w.onmessage =function(e){
+            result.innerHTML = e.data;
+        }
+    }
+</script>
+</body>
+</html>

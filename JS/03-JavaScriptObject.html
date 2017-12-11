@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>JS中的对象表现</title>
+  <script>
+	function showObject(){
+		var fbb={
+			yuwen:121,
+			shuxue:140,
+			yingyu:150
+		};
+		console.log("语文："+fbb.yuwen);
+		console.log("数学："+fbb.shuxue);
+		console.log("英语："+fbb.yingyu);
+	}
+	
+	function yangmi(){
+		var yangmi={
+			height:165,
+			weight:50,
+			gender:"女"
+		};	
+		console.log("身高:"+yangmi.height);
+		console.log("体重:"+yangmi.weight);
+		console.log("性别:"+yangmi.gender);
+	}
+	function showObjectArr(){
+		var star = [
+		{
+			height:121,
+			weight:73,
+			gender:"女"
+		},
+		{
+			height:165,
+			weight:50,
+			gender:"女"
+		},
+		{
+			height:188,
+			weight:55,
+			gender:"女"
+		}
+		];
+		for(var i=0;i<star.length;i++){
+			var s=star[i];
+			console.log(s.height,s.weight,s.gender);
+		}
+	}
+	
+	function showObjectArray(){
+		var fbb={
+			height:121,
+			weight:73,
+			gender:"女"
+		};
+		var ym={
+			height:165,
+			weight:50,
+			gender:"女"
+		};	
+		var star = [fbb,ym];
+		for(var i=0;i<star.length;i++){
+			var s=star[i];
+			console.log(s.height,s.weight,s.gender);
+		}
+	}
+  </script>
+ </head>
+ <body>
+  <button onclick="showObject()">显示对象</button>
+  <button onclick="yangmi()">对象显示</button>
+  <button onclick="showObjectArray()">显示对象的数组</button>
+  <button onclick="showObjectArr()">showObjectArr()</button>
+ </body>
+</html>

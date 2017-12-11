@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script type="text/babel">
+       var Rus = React.createClass({
+            render:function(){
+                return <label>用户名:</label>
+            }
+        });
+       var Rp = React.createClass({
+            render:function(){
+                return <input type="text"/>
+            }
+        });
+       var Rpw = React.createClass({
+            render:function(){
+                return <label>密码:</label>
+            }
+        });
+       var Rps = React.createClass({
+            render:function(){
+                return <input type="password"/>
+            }
+        });
+       var Bo = React.createClass({
+            render:function(){
+                return <button>注册</button>
+            }
+        });
+       var Rt = React.createClass({
+            render:function(){
+                return <button>登录</button>
+            }
+        });
+       var Rs = React.createClass({
+            render:function(){
+                return <form>
+                    <Rus></Rus>
+                    <Rp></Rp>
+                    <br/>
+                    <Rpw></Rpw>
+                    <Rps></Rps>
+                    <br/>
+                    <Bo></Bo>
+                    <Rt></Rt>
+                </form>
+            }
+        });
+        ReactDOM.render(
+                <Rs></Rs>,
+                document.getElementById('container')
+        );
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/babel">
+    var MyForm = React.createClass({
+        getInitialState:function(){
+            return {
+                myValue:'hello'
+            }
+        },
+        handleChange:function(event){
+            this.setState({
+                /*myValue:this.refs.myInput.value*/
+                myValue:event.target.value
+            });
+            console.log(event.target.value);
+        },
+        render:function(){
+            return <form>
+                <input type="text" value={this.state.myValue} onChange={this.handleChange} /*ref="myInput"*/ />
+            </form>
+        }
+    });
+    ReactDOM.render(
+    < MyForm> </ MyForm>,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>

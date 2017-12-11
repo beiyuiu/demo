@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>显示Person.json中的数据</title>
+  <script src="00-common.js"></script>
+  <script>
+	function showJSON(){
+		var xhr=createXhr();
+		xhr.open("get","Person.json",true);
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				//得到JSON格式的字符串
+				var resText=xhr.responseText;
+				//将resText转换为JS对象/数组
+				var persons=JSON.parse(resText);
+				for(var i=0;i<persons.length;i++){
+					var per=persons[i];
+					console.log(per.name,per.age,per.gender);
+				}
+			}
+		}
+		xhr.send(null);
+	}
+  </script>
+ </head>
+ <body>
+  <button onclick="showJSON()">显示Person.json中的数据</button>
+ </body>
+</html>

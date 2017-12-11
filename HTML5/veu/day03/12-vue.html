@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件监听</h3>
+    <div id="app">
+        <my-game></my-game>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+       Vue.component("my-game",{
+           template:`
+            <div>
+                <input type="text" v-model="num1" @keyup.13="clearNum"/><br/>
+                <select id="pid" @click="tee">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+                <input type="text" v-model="num2" @keyup.13="clearNum"/><br/>
+                <button @click="tee">计算结果</button>
+                <p>{{result}}</p>
+            </div>
+           `,
+           beforeMount:function(){
+              this.num1=0;
+              this.num2=0;
+           },
+           data:function(){
+            return {
+               num1:0,
+                num2:0,
+                result:""
+            }
+          },
+           methods:{
+               clearNum:function(){
+                   this.num1="";
+                   this.num2="";
+               },
+               tee:function(){
+                   var opt= document.getElementById("pid").value;
+                   console.log(opt);
+                   this.result=this.num1optthis.num2;
+               }
+           }
+       });
+       var exampleData = {
+           msg:"hello",
+        };
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+        });
+    </script>
+</body>
+</html>

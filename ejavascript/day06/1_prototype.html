@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<script>
+		function Student(sname,sage){
+			this.sname=sname,
+			this.sage=sage;
+		}
+		/*Student.prototype.intr=function(){
+			console.log(
+			"I'm "+this.sname,
+			"I'm "+this.sage);
+		}
+		Student.prototype.className="初一2班";*/
+		Student.prototype={
+			intr(){
+				console.log("I'm"+this.sname+",I'm"+this.sage);
+			},
+			className:"初一2班",
+			toString(){//重写toString
+				var arr=[];
+				for(var key in this){
+					if(typeof this[key] != "function")
+						arr.push(key+":"+this[key]);
+				}
+				return "{"+arr.join(",")+"}";
+			}
+		};
+		var lilei=new Student("Li Lei",11);
+		var lele=new Student("Le Le",12);
+		console.log(lilei);
+		console.log(lele);
+		console.log(lilei.__proto__==lele.__proto__);
+//		lele.intr();
+//		lilei.intr();
+		console.log(lilei.className,lele.className);
+		Student.prototype.className="初二2班";
+		console.log(lilei.className,lele.className);
+		console.log(
+			lilei.hasOwnProperty("sname"),
+			lilei.hasOwnProperty("sage"),
+			lilei.hasOwnProperty("classname"),
+			lele.hasOwnProperty("sname"),
+			lele.hasOwnProperty("sage"),
+			lele.hasOwnProperty("classname")
+		);
+	</script>
+ </body>
+</html>

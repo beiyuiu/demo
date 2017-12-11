@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/babel">
+    var MyList =  React.createClass({
+        render:function(){
+            return <ul>
+                <li>和人</li>
+            {
+                React.Children.map(
+                    this.props.children,
+                    function(child){
+                        return child;
+                    }
+            )}
+            </ul>
+        }
+    });
+    ReactDOM.render(
+        <MyList>
+            <li>集合</li>
+            <li>胡</li>
+        </MyList>,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>

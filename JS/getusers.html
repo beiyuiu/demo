@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="00-common.js"></script>
+  <script>
+	function getUser(){
+		var xhr=createXhr();
+		xhr.open("get","users.json",true);
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var resText=xhr.responseText;
+				var users=JSON.parse(resText);
+				for(var i=0;i<users.length;i++){
+					var user=users[i];
+					console.log("用户名："+user.uname+"\n","用户密码："+user.upwd+"\n","用户性别："+user.gender+"\n");
+				}
+			}
+		}
+		xhr.send(null);
+	}
+  </script>
+ </head>
+ <body>
+  <button onclick="getUser()">输出</button>
+ </body>
+</html>

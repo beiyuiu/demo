@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+	/*function xing1(){
+		for(var i=1;i<=9;i++){
+			var array=[];
+			for(var j=1;j<=i;j++){
+				array[array.length]="*";
+			}
+		var str=array.join("");
+		console.log(str);
+		}
+	}
+	xing1();*/
+	function cheng(){
+		for(var i=1,array=[];i<10;i++,array.length=0){
+			for(var j=1;j<=i;j++){
+				array[array.length]=i+"*"+j+"="+i*j;
+			}
+			console.log(array.join(" "));
+		}
+	}
+	cheng();
+	/*function xing2(){
+		for(var i=1;i<=9;i++){
+			var arr1=[];
+			var arr2=[];
+			for(var j=0;j<9-i;j++){
+				arr1[arr1.length]=" ";
+			}
+			for(var k=0;k<i*2-1;k++){
+				arr2[arr2.length]="*";
+			}
+			console.log(arr1.join("")+arr2.join(""));
+		}
+		
+	}
+	xing2();*/
+	function xing(){
+		for(var i=1,array=[];i<=5;i++,array.length=0){
+			for(var j=1;j<=5-i;j++){
+				array[array.length]=" ";
+			}
+			for(var k=1;k<=2*i-1;k++){
+				array[array.length]="*";
+			}
+			console.log(array.join(""));
+		}
+	}
+	xing();
+  </script>
+ </body>
+</html>

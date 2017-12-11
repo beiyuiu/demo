@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+	var arr=[21,45,54,12,36];
+	function testSortAsc(a,b){
+		return a-b;
+	}
+		
+	function df(){
+		console.log(arr.sort(testSortAsc));
+	}
+
+	function su(){
+		var arr1=arr.sort(function(a,b){return b-a;});
+		console.log(arr1);
+	}
+  </script>
+  <button onclick="df()">升序</button>
+  <button onclick="su()">降序</button>
+ </body>
+</html>

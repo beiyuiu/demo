@@ -1,0 +1,98 @@
+Path:由多个坐标点组成任意形状，路径不见，可用于“描边”“填充”“裁剪”；
+ctx.beginPath();    开始一条新路径
+ctx.closePath();    闭合当前路径
+ctx.moveTo();       移动指定点
+ctx.lineTo();    从当前点到指定点画一条直线
+ctx.arc(cx,cy,r,start,end);    绘制圆拱形路径
+ctx.stroke()    对当前路径描边
+ctx.fill()                    对当前路径填充
+ctx.                对当前路径裁剪
+canvas 绘图，先下载，图片加载完成后再绘图
+Canvas绘制多张图片，异步加载，不能预测哪张加载完成
+    解决：使用整型数字通过计算完成图片加载
+rotate;translate;
+ctx.rotate   旋转绘图对象，轴点画布原点
+ctx.translate(x,y)
+ctx.save()
+ctx.restore()
+canvas绘图与SVG绘图
+2D位图           2D矢量图
+js代码           标签
+每个图形         每个图形
+不是元素         都是元素
+不能直接         直接绑定
+绑定事件         事件监听
+游戏特性         图标地图
+<rect width="" height="" x="" y="" fill="" fill-opacity="" stroke="" stroke-width="" stroke-opacity="">矩形</rect>
+<circle cx="" cy="" r="" fill="" fill-opacity="" stroke="" stroke-opacity="">圆
+<ecllipse cx="" cy="" rx="" ry="">椭圆
+<line x1="" y1="" x2="" y2="" stroke="" stroke-width="">直线
+<polyline points="50,50,100,55.." stroke="" fill="">折线
+<polygon points="">多边形
+<text font-size="" fill="transparent" stroke="" x="" y="" alignment-baseline="before-edge">文本
+<image xlink:href="" width="" height="" x="" y="">图像
+渐变对象
+<defs>定义特效对象
+<linearGradient id="" x1=""y1="" x2="" y2="">
+    <stop offset="0" stop-color="red"/>
+    <stop offset="1" stop-color="green"/>
+</linearGradient>
+</defs>
+<ANY fill="url(#g3)" stroke="url(#g3)">
+滤镜
+<defs>
+    <filter id="f2">
+        <feGaussianBlur stdDeviation="3"/>
+    </filter>
+    <ANY filter="url(#f2)">
+</defs>
+上传文件
+1:工作流程
+  客户端有一张图片->通过浏览器发送-->服务器->文件夹
+2:创建哪些程序和目录完成上传
+  2.1:创建目录  uploads
+  2.2:创建php  homework1.php
+  2.3:创建html homework1.html
+
+3:php 坑跳出去(上传文件不能太多 128MB)
+copy php.ini-->php1.ini-->php2.ini
+配置 php.ini 如下：
+是否允许上传文件
+file_uploads = On
+上传文件的临时止录
+upload_tmp_dir = "d:/fileuploadtmp"
+上传文件最大值
+upload_max_filesize = 50M
+post上传文件最大值(大于上面值)
+post_max_size = 100M
+单个php执行时长
+max_execution_time = 600
+输入数据文件时长
+max_input_time = 600
+单个php使用内存最大值
+memory_limit = 128M
+HTML5新特性Geolocation地理定位
+手机获取定位信息
+    1、首选GPS芯片与卫星通信，定位精度在米
+    2、选择手机通信基站进行定位获取，定位精度公里
+PC浏览器获取定位信息
+    1、通过IP地址反向解析，精度取决于IP库
+HTML5新对象用于获取当前浏览器定位信息
+window.navigator.geolocation{
+    getCurrentPosition  获取定位信息
+    watchPosition       监听定位数据改变
+    clearWatch          去除监听
+}
+百度地图
+    1、注册百度开发者账户
+    2、创建一个网站，登录百度地图，为网站申请AccessKey
+拖动源对象：——不触发事件
+    dragstart       拖动开始
+    drag            拖动中
+    dragend         拖动结束
+拖动的目标对象——触发事件
+    dragenter       拖动进入
+    dragover        拖动悬停上方
+    dragleave       拖动离开
+    drop            拖动在上方释放
+阻止拖动事件默认行为——>一旦悬停立刻离开

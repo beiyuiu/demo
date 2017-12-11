@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>保存数据</h1>
+    <a href="get.html">下一个页面</a>
+    <script>
+        var msg = "hello daxu";
+        var age = 24;
+        sessionStorage.setItem("item_1",msg);
+        sessionStorage["age"]=age;
+        sessionStorage.removeItem("age");
+        sessionStorage.clear();
+    </script>
+</body>
+</html>

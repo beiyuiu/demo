@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>css类内部Hack</title>
+ </head>
+ <body>
+	<style>
+		#d1{
+			width:200px;
+			height:200px;
+			background-color:red;<hr>
+			background-color:pink\0;/*8\9\10*/
+			background-color:orange\9\0;/*9\10*/
+			+background-color:green;/*6\7*/
+			-background-color:blue;/*6*/
+		}
+		
+	</style>
+ </body>
+	<div id="d1"></div>
+	
+</html>

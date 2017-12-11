@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="7_ajax.js"></script>
+	<script>
+		ajax("get","5-1-conn.php","","text")
+		.then(function(data){
+			console.log(data);
+		})
+		.catch(function(err){
+			console.log(err);
+		})
+	</script>
+</body>
+</html>

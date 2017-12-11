@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        #c2{background: #D3D6DA;}
+    </style>
+</head>
+<body>
+<canvas id="c2" width="500" height="400">你的浏览器版本过低，请更新</canvas>
+<script>
+    /*获取画布；获取画笔；开始新路径；将画笔移动到指定点*/
+    var c2=document.getElementById("c2");
+    var ctx=c2.getContext("2d");
+    ctx.beginPath();
+    /*ctx.arc(50,50,25,0*Math.PI/180,360*Math.PI/180);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(250,200,50,0,2*Math.PI);
+    //ctx.fill();
+    //ctx.fillStyle="red";
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(270,180,5,0*Math.PI/180,360*Math.PI/180);
+    ctx.fill();
+    ctx.fillStyle="#fff";
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(260,180,20,0*Math.PI/180,360*Math.PI/180);
+    //ctx.fill();
+    //ctx.fillStyle="#000";
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(300,210);
+    ctx.lineTo(250,210);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(380,200,50,0,2*Math.PI);
+    ctx.stroke();*/
+    ctx.beginPath();
+    ctx.strokeStyle="#aaa";
+    ctx.lineWidth=15;
+    ctx.arc(250,200,100,0,2*Math.PI);
+    ctx.stroke();
+    var start =-90;
+    var end =-90;
+    var timer =setInterval(function(){
+        ctx.beginPath();
+        ctx.arc(250,200,100,start*Math.PI/180,end*Math.PI/180);
+        end +=5;
+        ctx.strokeStyle="green";
+        ctx.stroke();
+        if(end>270){
+            clearInterval(timer);
+        }
+    },100);
+</script>
+</body>
+</html>

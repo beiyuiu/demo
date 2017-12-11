@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="common.js"></script>
+  <script>
+	function showUname(){
+		$("show").innerHTML=$("uname").value;
+	}
+  </script>
+ </head>
+ <body>
+	<div id="show"></div>
+	<input type="text" id="uname" onblur=showUname()>
+	<!--当uname控件失去焦点时，将uname的值显示在div中-->
+ </body>
+</html>

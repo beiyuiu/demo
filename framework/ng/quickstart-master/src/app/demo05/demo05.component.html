@@ -1,0 +1,20 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>分数</th>
+                <th>年龄</th>
+                <th>性别</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let tmp of ulist">
+                <tr *ngIf="tmp.sorce>80">
+                    <td>{{tmp.sorce}}</td>
+                    <td>{{tmp.age}}</td>
+                    <td>{{tmp.sex}}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>

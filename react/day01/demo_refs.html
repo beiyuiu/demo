@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/babel">
+   var MyInput = React.createClass({
+       handleChange:function(){
+          this.props.funcKl(this.refs.myPu.value);
+       },
+       render:function(){
+           return <input type="text" ref="myPu" onChange={this.handleChange}/>
+       }
+   });
+   var MyButton = React.createClass({
+       handleClick:function(){
+           console.log(this.props.myValue);
+       },
+       render:function(){
+           return <button onClick={this.handleClick}>MYbh</button>
+       }
+   });
+   var MyLogin = React.createClass({
+           getInitialState:function(){
+            return {
+                myResult:""
+                }
+            },
+           clickTr:function(value){
+           this.setState({myResult:value});
+       },
+
+       render:function(){
+           return <div>
+            <MyInput funcKl={this.clickTr}></MyInput>
+            <MyButton myValue={this.state.myResult}></MyButton>
+           </div>
+       }
+   });
+    ReactDOM.render(
+    <MyLogin></MyLogin>,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>

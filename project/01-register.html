@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<script src="00-common.js"></script>
+	<script>
+		function ckeckUname(){
+			var uname=$("uname").value;
+			if(uname==""){
+				$("uname-show").innerHTML="用户名不能为空";
+			}else{
+				//验证uname是否存在(AJAX)
+				var xhr=createXhr();
+				xhr.open("","",);
+			}	
+		}
+		function checkPwd(){
+			var upwd=$("uwd").value;
+			var pwd=$("pwd").value;
+			if(upwd==pwd){
+				$("msg").innerHTML="正确";
+			}else{
+				$("msg").innerHTML="请重新输入";
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action="01-register.php" method="post">
+		<p>
+			登录名<input type="text" name="uname" id="uname">
+			<span id="uname-show" onblur="ckeckUname()"></span>
+		</p>
+		<p>
+			登录密码<input type="password" name="upwd" id="uwd">
+		</p>
+		<p>
+			确认密码<input type="password" id="pwd" onblur="checkPwd()">
+			<span id="msg" ></span>
+		</p>
+		<p>
+			邮箱<input type="email" name="email">
+		</p>
+		<p>
+			电话号码<input type="text" name="phone">
+		</p>
+		<p>
+			用户名称<input type="text" name="user_name">
+		</p>
+			用户性别
+			<select name="gender">
+				<option value="0">男</option>
+				<option value="1">女</option>
+			</select>
+		<p>
+			<input type="submit" value="注册">
+		</p>
+	</form>
+</body>
+</html>

@@ -1,0 +1,10 @@
+console.log(s1.parentNode);
+console.log(document.body.childNodes);
+console.log(s1.nextSibling);
+console.log(s1.previousSibling);
+console.log(s1.previousElementSibling);
+console.log(s1.previousElementSibling);
+console.log(s1.parentElement);
+console.log(document.body.children);
+var h1=document.body.children[1];
+console.log(h1);

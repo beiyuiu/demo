@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件生命周期</h3>
+    <div id="app">
+       <man></man>
+       <son></son>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var bus = new Vue();
+       Vue.component("man",{
+           data:function(){return{
+               count:0,
+               isVal:false
+           }},
+           template:`
+                <div>
+                    <h4>发送数据</h4>
+                    <button @click="setData" v-bind:disabled="isVal">自加</button>
+                </div>
+           `,
+           methods:{
+               setData:function(){
+                   bus.$emit("cutEvent","count,isVal");
+               }
+           }
+       });
+       Vue.component("son",{
+           template:`
+                <div>
+                    <h4>接收数据</h4>
+                    <p></p>
+                </div>
+           `,
+           mounted:function(){
+               bus.$on("cutEvent",function(msg){
+                   console.log(1);
+                   console.log(msg);
+                   document.getElementsByTagName("p").innerhtml=2;
+                   if(msg>10){
+                       this.isVal=true;
+                   }else{
+                       this.isVal=false;
+                   }
+               });
+
+           }
+       });
+        new Vue({el:"#app"})
+    </script>
+</body>
+</html>

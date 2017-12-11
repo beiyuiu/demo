@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<button>click me!</button>
+	<button>click me!</button>
+	<button>click me!</button>
+	<button>click me!</button>
+	<button>click me!</button>
+	<button>click me!</button>
+	<button>click me!</button>
+  <script>
+	var btns=document.getElementsByTagName("button");
+	/*function factory(i){
+		return function(){
+			alert("我是第"+i+"个");
+		}
+	}*/
+	for(let i=0;i<btns.length;i++){
+		//(function(i)){
+		btns[i].onclick=function(){
+			alert("降龙十八掌第"+(i+1)+"式");
+		}
+		//}(i)
+	}
+  </script>
+ </body>
+</html>

@@ -1,0 +1,84 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>二级联动列表</title>
+<meta charset="utf-8" />
+<style>
+	.hide{ display: none; }
+</style>
+
+
+</head>
+<body>
+	<select name="family">
+		<option>—请选择—</option>
+		
+	</select>
+	
+	<select name="laptop" class="hide">
+		<option>—请选择—</option>
+	</select>
+	<script src="ajax.js"></script>
+	<script>
+	var selFamily=document.querySelector("[name=family]");
+	var selLaptop=document.querySelector("[name=laptop]");
+	ajax("get","7_getFamily.php","")
+	.then(data=>{
+	var frag=document.createDocumentFragment();
+	for(var family of data){
+		/*var option=document.createElement("option");
+		option.innerHTML=family.fname;
+		option.value=family.fid;
+		frag.appendChild(option);*/
+		frag.appendChild(new Option(family.fname,family.fid));
+	}
+	selFamily.appendChild(frag);
+	selFamily.onchange=function(){
+	var fid=this.value;
+	/**如果fid是-请选择-
+          *设置selLaptop的class为hide
+        否则
+          *向7_getLaptopByFid.php发送get请求，拼接fid=变量fid作为参数
+           * 然后,获得data
+            *  清空selLaptop的内容
+             * 创建文档片段frag
+              *创建option
+              *设置option的内容为-请选择-
+              *将option追加到frag中
+              *遍历data中每个商品
+               * 每遍历一个就创建一个option
+                *设置option的value为当前商品的lid
+                *设置option的内容为当前商品的title
+                *将option追加到frag
+              (退出循环)
+              *将frag追加到selLaptop中
+              *清除selLaptop的class
+		*/
+		if(fid=="-请选择-"){
+			selLaptop.className="hide";
+		}else{
+			ajax("get","7_getLaptopByFamily.php?fid="+fid,"")
+			.then(data=>{
+				selLaptop.innerHTML="";
+				var frag=document.createDocumentFragment();
+				/*var option=document.createElement("option");
+				option.innerHTML="-请选择-";
+				frag.appendChild(option);*/
+				frag.appendChild(new Option("-请选择-"));
+				for(var laptop of data){
+					/*var option=document.createElement("option");
+					option.innerHTML=laptop.title;
+					option.value=laptop.lid;
+					frag.appendChild(option);*/
+					frag.appendChild(new Option(laptop.title,laptop.lid));
+				}
+				selLaptop.appendChild(frag);
+				selLaptop.className="";
+			})
+		}
+	}
+	})
+	
+	</script>
+</body>
+</html>

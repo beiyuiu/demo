@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        canvas{border:1px solid red;}
+    </style>
+</head>
+<body>
+    <h2>验证码</h2>
+    <canvas width="120" height="50" id="c2"></canvas>
+    <script>
+        //创建函数返回随机数
+       function rn(min,max){
+           var n=Math.random()*(max-min)+min;
+           return Math.floor(n);
+       }
+        //返回随机色
+        function rc(min,max){
+            var r =rn(min,max);
+            var g =rn(min,max);
+            var b =rn(min,max);
+            return `rgb(${r},${g},${b})`;
+        }
+        var c2=document.getElementById("c2");
+        var ctx=c2.getContext("2d");
+        var w=120;
+        var h=50;
+        ctx.fillStyle= rc(180,230);
+       ctx.fill();
+        ctx.fillRect(0,0,w,h);
+        var pool="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        for(var i=0;i<4;i++){
+            var c=pool[rn(0,pool.length)];//随机文字
+            var fs =rn(18,40);              //随机大小
+            var deg =rn(-45,45);            //随机旋转角度
+            ctx.font=fs+"px SimHei";
+            ctx.fillStyle =rc(80,180);      //随机颜色
+            ctx.textBaseline="top";         //设置基线
+            ctx.save();                     //保存旋转状态
+            ctx.translate(30*i+15,15);      //设置原点
+            ctx.rotate(deg*Math.PI/180);    //设置旋转角度
+            ctx.fillText(c,-15+5,-15);      //填充文字
+            ctx.restore();                  //恢复到保存点
+        }
+        for(var i=0;i<5;i++){
+            ctx.strokeStyle=rc(0,255);     //随机干扰颜色
+            ctx.beginPath();
+            ctx.moveTo(rn(0,w),rn(0,h));    //干扰线起始点
+            ctx.lineTo(rn(0,w),rn(0,h));    //干扰线
+            ctx.stroke();
+        }
+        for(var i=0;i<100;i++){
+            ctx.beginPath();
+            ctx.strokeStyle=rc(0,255);
+            ctx.arc(rn(0,w),rn(0,h),1,0,2*Math.PI);
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>

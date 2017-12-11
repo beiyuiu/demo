@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="00-common.js"></script>
+  <script>
+	function loadUser(){
+		//获取xhr
+		var xhr=createXhr();
+		//创建请求
+		xhr.open("get","00-work.php",true);
+		//设置回调
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				//接收数据转换为json数组
+				var resText=xhr.responseText;
+				var users=JSON.parse(resText);
+				//console.log(users);
+				var html="";
+				for(var i=0;i<users.length;i++){
+					var user =users[i];
+					html+="<tr>";
+						html+="<td>"+user.uname+"</td>";
+						html+="<td>"+user.emali+"</td>";
+						html+="<td>"+user.user_name+"</td>";
+						html+="<td>";
+							html+="<a href='#'>删除</a>";
+							html+="<a href='#'>修改</a>";
+	               		html+="</td>";
+					html+="</tr>";
+				}
+			}
+		}
+		//发送请求
+		xhr.send(null);
+	}
+  </script>
+ </head>
+ <body onload="loadUser()">
+<table width=500px border=1px>
+	<thead>
+		<tr>
+			<th>用户名</th>
+			<th>邮件</th>
+			<th>姓名</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody id="body"></tbody>
+</table>  
+ </body>
+</html>

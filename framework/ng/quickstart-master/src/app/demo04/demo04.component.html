@@ -1,0 +1,14 @@
+
+<h1>
+    这是我创建的一个包含各项指令的组件
+</h1>
+<p>{{"111"+isMember}}</p>
+<p *ngIf="isMember">会员可见</p>
+<!--多重判断-->
+<div [ngSwitch]="rightAnswer">
+    <p *ngSwitchCase="'a'">正确答案是A</p>
+    <p *ngSwitchCase="'b'">正确答案是B</p>
+    <p *ngSwitchCase="'c'">正确答案是C</p>
+    <p *ngSwitchCase="'d'">正确答案是D</p>
+    <p *ngSwitchDefault>敌军还有三十秒到达战场</p>
+</div>

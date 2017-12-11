@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<studentList>
+	<student>
+		<name>dingding</name>
+		<gender>male</gender>
+		<age>41</age>
+	</student>
+	<student>
+		<name>dangdang</name>
+		<gender>male</gender>
+		<age>18</age>
+	</student>
+	<student>
+		<name>lele</name>
+		<gender>man</gender>
+		<age>22</age>
+	</student>
+</studentList>

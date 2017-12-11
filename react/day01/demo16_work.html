@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/babel">
+    var MyInput = React.createClass({
+
+        handleClick:function(){
+            this.props.funcAdd(this.refs.myInput.value);
+            //点击add按钮后清空input输入框
+            this.refs.myInput.value = "";
+        },
+        render:function(){
+            return <div>
+                <h2>add item</h2>
+                <input type="text" ref="myInput"/>
+                <button onClick={this.handleClick}>add</button>
+            </div>
+        }
+    });
+    var MyList = React.createClass({
+        render:function(){
+            return <ul>
+            {
+                /*embedded:24 Uncaught TypeError: Cannot read property 'props' of undefined
+                 at eval (eval at transform.run (browser.min.js:3), <anonymous>:40:111)
+                 at Array.map (<anonymous>)
+                 at Constructor.render (eval at transform.run (browser.min.js:3), */
+                //注意map方法中的this的指向问题解决方法：使用箭头函数；用bind重新绑定this
+                this.props.myList.map(function(value,index ) {
+                        console.log(value, index);
+                        return <MyItem
+                        key = {index}
+                        myValue = {value}
+                        myIndex = {index}
+                        myDele = {this.props.funcDele} / >
+        }.bind(this))
+            }
+            </ul>
+        },
+
+    });
+    var MyItem = React.createClass({
+        render:function(){
+            return <div>
+            <span>{this.props.myValue}</span>
+            <button onClick={this.handelDelete}>delete</button>
+            </div>
+        },
+        handelDelete:function(){
+            console.log(this.props.myIndex)
+            this.props.myDele();
+        }
+    });
+    var MyBox = React.createClass({
+        getInitialState:function(){
+             return { list:[] }
+        },
+        add:function(value){
+            var nowList = this.state.list;
+            nowList.push(value);
+            this.setState({
+                list:nowList
+            },function(){
+                console.log(this.state.list);
+            })
+        },
+        delete:function(index){
+            var nowList = this.state.list;
+            //splice用于删除数组中指定位置的元素
+            nowList.splice(index,1);
+            this.setState({list:nowList},function(){
+                console.log(this.state.list);
+            });
+        },
+        render:function(){
+            return <div>
+                <MyInput funcAdd={this.add}/>
+                <br/>
+                <MyList myList={this.state.list} funcDele={this.delete}/>
+            </div>
+        }
+    });
+    ReactDOM.render(
+    < MyBox  >< /MyBox >,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>

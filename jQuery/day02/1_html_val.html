@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+ </head>
+ <body>
+	<h1>操作元素的内容和值</h1>
+	<form action="">
+		用户名:<input name="uname">
+					<span></span><br>
+		密码:<input type="password" name="upwd">
+					<span></span><br>
+		<input type="submit" value="提交注册信息">
+	</form>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+    //正确时，使用图片:"<img src='img/ok.png'>"
+    //姓名错误时: "<img src='img/err.png'>用户名必须介于3~9位之间!"
+    //密码错误时: "<img src='img/err.png'>密码必须介于6~8位之间!"
+    //阻止默认行为: e.preventDefault();
+    //表单提交: $(form).submit();
+	$("form>[name=uname]").blur(function(e){
+		var $this=$(this);
+		var $val=$this.html();
+		var $span=$this.next();
+		if($val.length>=3 && $val.length<=9){
+			$span.html("<img src='img/ok.png'>");
+		}else{
+			$span.html("<img src='img/err.png'>"+"用户名必须介于3~9位之间");
+		}
+	});
+	$("form>[name=upwd]").blur(function(e){
+		var $this=$(this);
+		var $val=$this.html();
+		var $span=$this.next();
+		if($val.length>=6 && $val.length<=8){
+			$span.html("<img src='img/ok.png'>");
+		}else{
+			$span.html("<img src='img/err.png'>"+"密码必须介于6~8位之间");
+		}
+	});
+	</script>
+ </body>
+</html>

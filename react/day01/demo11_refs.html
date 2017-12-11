@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/babel">
+
+    var MyTest = React.createClass({
+        handleClick:function(){
+            var n1 = parseInt(this.refs.myIp1.value);
+            var n2 = parseInt(this.refs.myIp2.value);
+            var sum = n1+n2;
+            console.log(sum);
+        },
+        render:function(){
+            return <form>
+            <input type="text" ref="myIp1"/>
+            <input type="text" ref="myIp2"/>
+                    <button onClick={this.handleClick}>sum</button>
+            </form>
+        }
+    });
+    ReactDOM.render(
+    <MyTest></MyTest>,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>

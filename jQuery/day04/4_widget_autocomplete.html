@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+ </head>
+ <body>
+  <h1>jQueryUI：Widgets —— Autocomplete</h1>
+	<input type="txtSeach" name="search" placeholder="请输入关键词">
+	<script src="js/jquery-1.11.3.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script>
+		$("#txtSeach").autocomplete({
+			source:"4_auto_complete.php",
+			select:function(e,obj){
+				$("#txtSeach").val(obj.item.title);
+				setTimeout(function(){
+					location="http://www.tmooc.cn?lid"+obj.item.lid;
+				},3000);
+				return false;
+			}
+			}).autocomplete("instance")
+				._renderItem=function($ul,p){
+					var $li=$(`<li><div>${p.title} 销量:${p.sold_count}</div></li>`);
+					$ul.append($li);
+					return $li;
+				};
+	</script>
+ </body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<button>4</button>
+	<button>5</button>
+  <script>
+	var btns=document.getElementsByTagName("button");
+	function factory(i){
+		return function(){
+			alert("我是第"+i+"个");
+		}
+	}
+	for(var i=0;i<btns.length;i++){
+		btns[i].onclick=factory(i);
+	}
+  </script>
+ </body>
+</html>

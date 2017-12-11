@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <router-view></router-view>
+</div>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-router.js"></script>
+<script>
+   var ProductList = Vue.component("product_list",{
+       data:function(){
+           return {lists:["Mac","MD","DF","FD"]}
+       },
+       template:`
+            <div>
+            <h3>产品列表</h3>
+                <ul>
+                    <li v-for="(item,key) in lists">
+                        <router-link :to="'/detail/'+key">{{item}}</router-link>
+                    </li>
+                </ul>
+            </div>
+       `
+   });
+    var ProductDetail = Vue.component("product_detail",{
+        data:function(){
+            return {productId:0}
+        },
+        template:`
+            <div>
+                <p>产品编号{{productId}}</p>
+            </div>
+        `,
+        mounted:function(){
+            console.log(this.$route.params.pid);
+            this.productId = this.$route.params.pid;
+        }
+    });
+    var NotFound = Vue.component("not-found",{
+        template:`
+            <div>
+                <h1>404 Page Not Found</h1>
+                <router-link to="/list">返回列表</router-link>
+            </div>
+        `
+    });
+    const myRoutes = [
+        {path:"",component:ProductList},
+        {path:"/list",component:ProductList,alias:"/lists"}, //取别名
+        {path:"/mylist",redirect:"/list"},  //重定向
+        {path:"/detail/:pid",component:ProductDetail},
+        {path:"*",component:NotFound},
+    ];
+    const myRouter = new VueRouter({
+        routes:myRoutes
+    });
+    new Vue({
+        router:myRouter,
+        el:"#app"
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/jquery.wysiwyg.css">
+ </head>
+ <body>
+	<textarea name="" id="wysiwyg" cols="80" rows="5"></textarea> 
+	<button id="btnSubmit"></button>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/jquery.wysiwyg.js"></script>
+	<script src="../js/wysiwyg.image.js"></script>
+	<script src="../js/wysiwyg.link.js"></script>
+	<script src="../js/wysiwyg.table.js"></script>
+	<script>
+		$("#wysiwyg").wysiwyg({
+			controls:{html:{visible:true}}
+		});
+		$("#btnSubmit").click(()=>{
+			
+		});
+	</script>
+ </body>
+</html>

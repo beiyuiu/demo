@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="ajax.js"></script>
+	<script>
+		ajax("get","02_time.php")
+		.then(function(output){
+			
+			var s=output.end-output.now;
+			var d=parseInt(s/(3600*24));
+			var h=parseInt(s%(3600*24)/3600);
+			var m=parseInt(s%3600/60);
+			var s=s%60;
+			console.log(
+			"距离国庆还有："+d+"天"+h+"小时"+m+"分"+s+"秒");
+		});
+	</script>
+</body>
+</html>

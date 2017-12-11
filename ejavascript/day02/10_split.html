@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var html=ulScores.innerHTML;
+		console.log(html);
+		html=html.replace(/^\s*<li>|<\/li>\s*$/g,"");
+		console.log(html);
+		var scores=html.split(/<\/li>\s*<li>/);
+		//鄙视
+		var stmt="we two who and who";
+//		var words=stmt.split(" ");
+//		console.log(words);
+//		for(var i=0;i<words.length;i++){
+//			var w=words[i];
+//			words[i]=w[0].toUpperCase()+w.slice(1);
+//		}
+//		stmt=words.join(" ");
+//		console.log(stmt);
+		//首写字母以边界或者以空格为起点
+		var stmt1=stmt.replace(/\b\w+|\s\w/g,function(word){return word.toUpperCase();});
+		console.log(stmt1);
+	</script>
+</body>
+</html>

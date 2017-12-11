@@ -1,0 +1,16 @@
+SET NAMES UTF8;
+DROP DATABASE IF EXISTS tedu;
+CREATE DATABASE tedu CHARSET=UTF8;
+USE tedu;
+CREATE TABLE student(
+	id INT,
+	name VARCHAR(16),
+	sex VARCHAR(1),
+	score DECIMAL(4,1),
+	brithday DATE
+);
+#SHOW TABLES;
+INSERT INTO student VALUES(101,'Tom','男',561,'2000-1-1');
+INSERT INTO student VALUES(102,'Mary','女',600,'2000-2-1');
+INSERT INTO student VALUES(105,'TomCruise','男',500,'2001-1-1');
+SELECT * FROM student;

@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var birth="19831226";
+		birth=birth.replace(
+			/(\d{4})(\d{2})(\d{2})/,
+			"$1年$2月$3日"
+		);
+		console.log(birth);
+//鄙视：
+		var str="I Like test,eat,lol,drink,wow";
+		var arr=str.match(/\b([a-z])[a-z]*\1\b/g);
+		console.log(arr);
+	</script>
+</body>
+</html> 

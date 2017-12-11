@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        {{count}}
+        <button @click="add">clickMe</button>
+        <br/>
+        <hr/>
+        <h3 v-if="count<6" v-change="count">自定义指令</h3>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var exampleData = {
+           msg:"hello",
+            count:0
+        }
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+            methods:{
+                add:function(){
+                    this.count++;
+                }
+            },     //保存自定义方法
+            directives:{        //保存自定义指令
+                change:{            //自定义指令change
+                    bind:function(el,bindings){
+                        console.log(el);
+                        console.log(bindings);
+                        console.log("绑定成功");
+                    },      //绑定
+                    update:function(el,bindings){
+                        console.log(bindings.value);
+                        console.log("数据变更");
+                    },       //更新数据
+                    unbind:function(el,bindings){
+                        console.log("解绑")
+                    },        //解绑
+                }
+            }
+        });
+    </script>
+</body>
+</html>

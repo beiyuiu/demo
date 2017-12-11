@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h3>vue</h3>
+<div id="app">
+    <!--view-->
+    {{message}}
+</div>
+<script src="js/vue.min.js"></script>
+<script>
+    /**
+     * 创建model
+     * 创建Vue实例
+     * */
+    var exampleData = {
+        message:"hello vue"
+    };
+    new Vue({
+        el:"#app", //挂载点（Vue对象挂载到app元素）
+        data:exampleData    //数据：exampleData
+    });
+</script>
+</body>
+</html>

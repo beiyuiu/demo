@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数的声明与调用</title>
+</head>
+<body>
+	<script>
+		function sayHello(){
+			alert("Hello World");
+			alert("你好,北京欢迎你！");
+		}
+
+		function testSayHello(){
+			alert("进入");
+			sayHello();
+			alert("结束");
+		}
+		//sayHello();
+	</script>
+	<button onclick="sayHello()">交电话费</button>
+	<button onclick="testSayHello()">调用testSayHello</button>
+</body>
+</html>

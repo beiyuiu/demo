@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<button id="btnZan">赞(+0)</button>  
+	<button id="btnCai">踩(+0)</button>  
+	<script>
+		function factory(word){
+			var n=0;
+			return function(){
+				this.innerHTML=word+"(+"+(++n)+")";
+			}
+		}
+		btnZan.onclick=factory("赞");
+		btnCai.onclick=factory("踩");
+	</script>
+ </body>
+</html>

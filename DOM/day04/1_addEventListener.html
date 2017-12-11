@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>...</title>
+  <script>
+  </script>
+ </head>
+  
+ <body>
+    <button id="btnShoot">shoot</button><br>
+    <button id="btnAward">获得跟踪导弹</button><br>
+   <!-- <button id="btnBreak">失去跟踪导弹</button><br>  -->
+	<script>	
+		btnShoot.onclick=function(){
+			console.log("发射普通子弹");
+		}
+		function getShoot2(){
+			//外层函数用于生成闭包的内层函数
+			var n=3;//受保护的变量：保存导弹个数
+			//受保护的变量，保存处理函数名
+			var handler=function(){
+				if(n>0){
+					n--;
+					alert("发射跟踪导弹");
+				}else
+					btnShoot.removeEventListener("click",handler)
+			};
+			return handler;//外层函数返回内层函数对象
+		}
+		btnAward.onclick=function(){
+			btnShoot.addEventListener("click",getShoot2());
+		}
+	</script>
+ </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>打开新链接方式总结</title>
+		<script>
+			/*打开新链接方式总结：
+1. 在当前窗口打开，可后退
+2. 在当前窗口打开，不可后退
+3. 在新窗口打开，可打开多个
+4. 在新窗口打开，只能打开一个
+*/
+	function open1(){
+		open("http://tmooc.cn","_self");
+	}
+	function open3(){
+		open("http://tmooc.cn","_blank");
+	}
+	function open4(){
+		open("http://tmooc.cn","blank");
+	}
+	function open2(){
+		location.replace("http://tmooc.cn");
+	}
+		</script>
+	</head>
+	<body>
+		<a href="http://tmooc.cn" target="_self">当前可退</a>
+		<a href="javascript:open1()">当前可退</a>
+		<a href="javascript:open2()">当前不可退</a>		
+		<br>
+		
+		<br>
+		<a href="http://tmooc.cn" target="_blank">新多</a>
+		<a href="javascript:open3()">新多</a>		
+		<br>
+		<a href="http://tmooc.cn" target="blank">新一</a>
+		<a href="javascript:open4()">新一</a>		
+	</body>
+</html>

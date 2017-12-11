@@ -1,0 +1,67 @@
+@jdred:#e4393c;
+@thinBorder:3px;
+@halfOpacity:0.6;
+@normalBorderStyle:solid;
+@baseFont:"SimHei";
+body{
+  margin: 1px;
+  font-size: 12px;
+}
+.box{
+  font: @baseFont;
+  background: rgba(0,0,0,@halfOpacity);
+  border: @thinBorder @normalBorderStyle blue;
+}
+@md-width:970px;
+@col-count:12;
+.col-md-1{
+  width: @md-width/@col-count;
+  border: 1px solid red;
+}
+.col-md-2{
+  width: @md-width/(@col-count/2);
+  border: 1px solid red;
+}
+//带样式混入
+.box5{
+  padding: 30px;
+  border: 1px solid #aaa;
+  margin-bottom: 20px;
+}
+.well5{
+  .box5;
+  background: #ccc;
+}
+//带样式的混入
+.box6(@pd,@bw,@mb:30px){
+  padding: @pd;
+  border: @bw solid #aaa;
+  margin-bottom: @mb;
+}
+.well6{
+  .box6(10px,1px,5px);
+  background: #ccc;
+}
+.well7{
+  .box6(10px,1px);
+  background: #ccc;
+}
+//函数
+.col-md-6{
+  width:floor(970px/2);
+  border: 1px solid red;
+}
+//小数转换为百分比
+.col-md-3{
+  width: percentage(970px/12*3/970px);
+  border: 1px solid red;
+}
+.box9{
+  color: @jdred;
+  background: lighten(@jdred,40%);
+}
+//图片宽高
+.my-img{
+  width: image-width("../img/1.jpg");
+  height:image-height("../img/1.jpg");
+}

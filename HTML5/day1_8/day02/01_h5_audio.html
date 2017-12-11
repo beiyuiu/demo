@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>h5新特性</h1>
+<audio id="mbg" src="res/bg.mp3"></audio>
+<input type="checkbox" name="cb" id="cb"/>
+<script>
+    document.getElementById("cb").onchange=function(){
+        if(this.checked){
+            document.getElementById("mbg").play();
+            document.getElementById("mbg").volume=0;
+            var timer=setInterval(function(){
+                document.getElementById("mbg").volume+=0.1;
+                if(document.getElementById("mbg").volume>0.9){
+                    clearInterval(timer);
+                }
+            },200);
+        }else{
+            document.getElementById("mbg").pause();
+        }
+    }
+
+</script>
+</body>
+</html>

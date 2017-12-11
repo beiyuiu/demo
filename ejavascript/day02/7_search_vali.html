@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.ok{color:green;}
+		.err{color:red;}
+		.hidden{display:none;}
+	</style>
+</head>
+<body>
+	密码：<input type="password" id="upwd">
+	<span id="msgUpwd" class="hidden">必须6位数字</span>
+	<script>
+		//当密码框获得焦点时
+		upwd.onfocus=function(){
+			msgUpwd.className="";
+			msgUpwd.innerHTML="必须6位数字";
+		}
+		//每次输入时验证
+		upwd.onkeyup=function(){
+			var i=upwd.value.search(/^\d{6}$/);
+			if(i!=-1){
+				msgUpwd.innerHTML="格式正确";
+				msgUpwd.className="ok";
+			}else{
+				msgUpwd.innerHTML="必须6位数字";
+				msgUpwd.className="err";
+			}
+		}
+	</script>
+</body>
+</html>

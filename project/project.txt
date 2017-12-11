@@ -1,0 +1,10 @@
+1、实现对用户的注册操作(非AJAX)
+	1、提供一个01-register.html页面
+		提供一个表单以及若干表单控件
+		1、uname——登录名——文本框(type="text")
+		2、upwd——登录密码——密码框(type="password")
+		3、cpwd——确认密码——密码框(type="password")
+		4、email——邮箱——密码框(type="password")
+		5、phone——确认密码——密码框(type="emali")
+		6、user_name——确认密码——密码框(type="text")
+		7、gender——性别——下拉列表(<select>)

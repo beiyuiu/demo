@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="00-common.js"></script>
+  <script>
+	function loadProvience(){
+		//获取请求
+		var xhr=createXhr();
+		//创建请求(将请求方式改为同步，确保在加载完省份后加载城市信息)
+		xhr.open("get","provience.php",false);
+		//设置回调函数
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var resText =xhr.responseText;
+				$("selProvience").innerHTML = resText;
+			}
+		}
+		//发送请求
+		xhr.send(null);
+	}
+	/**
+	*当selProvience选项发生更改时，要执行的操作，即加载对应的城市信息
+	*/
+	function loadCity(){
+		//获取xhr
+		var xhr=createXhr;
+		//创建请求
+		var pid=$("selProvince").value;
+		var url="02-loadCity.php?pid="+pid;
+		//设置回调
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				var resText=xhr.responseText;
+				$("selCity").innerHTML=resText;
+			}
+		}
+		//发送请求
+		xhr.send(null);
+	}
+	/**
+	*网页加载时要执行的函数
+	*将此函数指定给body的onload事件
+	*/
+	function pageLoad(){
+		loadProvince();
+		loadCity();
+	}
+  </script>
+ </head>
+ <body onload="pageLoad()">
+  <select name="" id="selProvience" onChange="loadCity()"></select>
+  <select name="" id="selCity"></select>
+ </body>
+</html>

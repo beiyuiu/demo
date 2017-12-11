@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+	function gu(){
+	var i=parseInt(Math.random()*100)+1;
+	console.log(i);
+	var num = prompt("请输入任意一个数字");
+	if(num=="exit"){
+		alert("下次再见");
+		
+	}
+	while(true){
+		if(i>num){
+			alert("猜大了");
+			
+		}else if(num<i){
+			alert("猜小了");
+			
+		}else{
+			alert("恭喜你猜中了");
+			break;
+		}
+	}
+	}
+  </script>
+ <button onclick="gu()">guess</button>
+ </body>
+</html>

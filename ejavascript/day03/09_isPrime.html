@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		/*判断一个数是否是质数*/
+		//执行效率;  异常处理;
+		function isPrime(n){
+			if(isNaN(n)&&n>1){
+				if(n<=3) return true;
+				if(n%2==0) return false;
+				else{
+					for(var i=3;i<=Math.sqrt(n);i+=2){
+						if(n%i==0)
+							return false;
+					}
+				}
+				return true;
+			}else
+				console.error("必须输入大于1的数字");
+		}
+		console.log(isPrime(6));
+	</script>
+</body>
+</html>

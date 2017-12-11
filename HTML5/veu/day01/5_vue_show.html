@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h3>vue 指令v-if</h3>
+<div id="app">
+    {{message}}
+    <h3 v-show="yes">yes</h3>
+    <h3 v-show="age>28">age:{{age}}</h3>
+    <h3 v-show="no">no</h3>
+    <h3 v-show="name.indexOf('o')>=0">name:{{name}}</h3>
+</div>
+<script src="js/vue.min.js"></script>
+<script>
+   var exampleData = {
+     message:"hello vue",
+       yes:true,
+       no:false,
+       age:28,
+       name:"lion"
+   };
+    new Vue({
+        el:"#app",
+        data:exampleData
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<?php
+	echo('1*1=1<br>');
+	echo('2*1=2&nbsp;&nbsp;2*2=4<br>');
+    echo('3*1=3&nbsp;&nbsp;3*2=6&nbsp;&nbsp;3*3=9<br>');
+	echo('4*1=4&nbsp;&nbsp;4*2=8&nbsp;&nbsp;4*3=12&nbsp;&nbsp;4*4=16<br>');
+	echo('5*1=5&nbsp;&nbsp;5*2=10&nbsp;&nbsp;5*3=15&nbsp;&nbsp;5*4=20&nbsp;&nbsp;5*5=25<br>');
+	echo('6*1=6&nbsp;&nbsp;6*2=12&nbsp;&nbsp;6*3=18&nbsp;&nbsp;6*4=24&nbsp;&nbsp;6*5=30&nbsp;&nbsp;6*6=36<br>');
+	echo('7*1=7&nbsp;&nbsp;7*2=14&nbsp;&nbsp;7*3=21&nbsp;&nbsp;7*4=28&nbsp;&nbsp;7*5=35&nbsp;&nbsp;7*6=42&nbsp;&nbsp;7*7=49<br>');
+	echo('8*1=8&nbsp;&nbsp;8*2=16&nbsp;&nbsp;8*3=24&nbsp;&nbsp;8*4=32&nbsp;&nbsp;8*5=40&nbsp;&nbsp;8*6=48&nbsp;&nbsp;8*7=56&nbsp;&nbsp;8*8=64<br>');
+	echo('9*1=9&nbsp;&nbsp;9*2=18&nbsp;&nbsp;9*3=27&nbsp;&nbsp;9*4=36&nbsp;&nbsp;9*5=45&nbsp;&nbsp;9*6=54&nbsp;&nbsp;9*7=63&nbsp;&nbsp;9*8=72&nbsp;&nbsp;9*9=81<br>');
+?>

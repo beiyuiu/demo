@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h3>测试试卷:</h3>
+<form action="#" id="list">
+    <p>red: <input type="text"/></p>
+    <p>green: <input type="text"/></p>
+    <p>blue: <input type="text"/></p>
+    <input type="button" value="提交" id="btSubmit"/>
+    <a href="result.html">完成测试</a>
+</form>
+
+<script>
+    var html="";
+    html +=`<li><span>${key}</span></li>`;
+    $("#list input").html(html);
+    btSubmit.onclick= function(){
+        var total = localStorage.length;
+        var correct = 0;
+        var error = 0;
+        var inputList = document.querySelectorAll("#list input");
+       //创建循环获取并且判断每一个用户输入答案
+        for(var i=0;i<inputList.length;i++){
+            //获取当前答案
+            var inputC = inputList[i].value;
+            //获取正确答案
+            var key = localStorage.key(i);
+            var val = localStorage.getItem(key);
+            if(val==inputC){
+                correct++;
+            }
+        }
+        //分析数量，保存结果，
+        sessionStorage.setItem("total",toatl);
+        sessionStorage.setItem("correct",correct);
+        sessionStorage.getItem("error",total-correct);
+        location.href="reslut.html";
+    }
+</script>
+</body>
+</html>

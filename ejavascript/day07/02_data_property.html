@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+    "use strict";
+
+    var eric={
+      id:1001,//只读
+      ename:"Eric",//禁止删除
+      salary:12000//禁止遍历
+    }
+    //设置id只读
+    //设置ename禁止删除
+    //设置salary禁止遍历，双保险
+    Object.defineProperties(eric,{
+      id:{writable:false,configurable:false},
+      ename:{configurable:false},
+      salary:{enumerable:false,configurable:false}
+    });
+    //获得一个属性的四大特性:
+    var id_attrs=
+      Object.getOwnPropertyDescriptor(eric,"id");
+    console.log(id_attrs);
+
+    //Object.defineProperty(eric,"id",{
+      //writable:true,
+      //configurable:true
+    //})
+    //eric.id=1002;
+    //delete eric.ename;
+    for(var key in eric){
+      console.log(key+":"+eric[key]);
+    }
+  </script>
+ </body>
+</html>

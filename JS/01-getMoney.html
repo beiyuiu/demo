@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>顺序结构</title>
+ </head>
+ <body>
+	<script>
+		function getMoney(){
+			var price=prompt("请输入单价");
+			var count=prompt("请说明购买数量");
+			var money=prompt("请输入收款金额");
+			if(money>total){
+				var change=money-total;
+				console.log("你共消费"+total);
+				alert(change);
+			}else{
+				console.log("你的余额已不足，请及时充值！");
+			}
+			var total=price*count;
+			if(total>=500){
+				alert("尊敬的客人你好，你本次消费已超500，享受八折优惠");
+				total*=0.8;
+			}
+			
+		}
+		
+		
+	</script>
+	<button onclick="getMoney()">找零</button>
+ </body>
+</html>

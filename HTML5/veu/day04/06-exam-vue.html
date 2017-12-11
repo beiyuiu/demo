@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件生命周期</h3>
+    <div id="app">
+       <parent></parent>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        Vue.component("parent",{
+            data:function(){
+                return {myCar:"QQ"}
+            },
+            template:`
+            <div>
+                <h4>父组件</h4>
+                <child :car="myCar"></child>
+            </div>
+            `
+        });
+        Vue.component("child",{
+           template:`<div><input type="text" :value="car">{{car}}
+           </div>`,
+            props:["car"],  //声明变量保存父组件数据
+           mounted:function(){
+               //声明结束，获取父元素数据
+               console.log(this.car);
+           }
+        });
+        var app  = new Vue({
+            el:"#app",
+        });
+    </script>
+</body>
+</html>

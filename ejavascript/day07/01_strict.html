@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+    "use strict";
+
+
+
+    //var gf;
+    //qgf="今晚308,w84u";
+    //console.log(gf);
+    //console.log(qgf);
+
+    //var hmm={
+      //gender:"女"//只读
+    //};
+    //Object.defineProperty(hmm,"gender",{
+      //writable:false
+    //});
+    //hmm.gender="男";
+    //console.log(hmm.gender);
+
+    //function fib(n){
+      //if(n<3) return 1;
+      ////else return arguments.callee(n-1)+arguments.callee(n-2)
+      //else{ 
+        //var f1=1,f2=1,fn;
+        //for(var i=3;i<=n;i++){
+          //fn=f1+f2;
+          //f1=f2;
+          //f2=fn;
+        //}
+        //return fn;
+      //}
+    //}
+    //console.log(fib(450));
+
+    function fun(){
+      console.log(this);//undefined
+    }
+    fun();
+    (function(){
+      console.log(this);//undefined
+    })()
+  </script>
+ </body>
+</html>

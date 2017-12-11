@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="common.js"></script>
+	
+</head>
+<body>
+	<input type="text" id="d1" onblur="test()">
+	<span id="d2"></span>
+	<script>
+		var i=$("d1").value;
+		function test(){
+			if(i==""){
+				$("d2").innerHTML="用户名不能为空";
+			}else{
+				$("d2").innerHTML="通过";
+			}
+		}
+	</script>
+</body>
+</html>

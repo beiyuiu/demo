@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script type="text/babel">
+    var MyBtn = React.createClass({
+            render:function(){
+                return <button>clickMe</button>
+            }
+        });
+    var MyHeader = React.createClass({
+        render:function(){
+            return <h1>hello 开发</h1>
+        }
+    });
+    var MyDob = React.createClass({
+        render:function(){
+            return <div>
+                <MyHeader></MyHeader>
+                <MyBtn></MyBtn>
+            </div>
+        }
+    });
+    ReactDOM.render(
+        <MyDob></MyDob>,
+            document.getElementById('container')
+        );
+    </script>
+</body>
+</html>

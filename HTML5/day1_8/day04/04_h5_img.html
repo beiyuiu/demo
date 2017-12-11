@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        canvas{background: #aaaaaa}
+    </style>
+</head>
+<body>
+    <canvas width="500" height="400" id="c2">你的版本过低请更新</canvas>
+    <script>
+        var ctx =c2.getContext("2d");
+        var progress=0;
+        var p3=new Image();
+        p3.src="img/p3.png";
+        p3.onload=function(){
+            progress+=25;
+            if(progress==50){
+                startDraw();
+            }
+        }
+        var p4=new Image();
+        p4.src="img/p4.png";
+        p4.onload=function(){
+            progress+=25;
+            if(progress==50){
+                startDraw();
+            }
+        }
+        function startDraw(){
+            ctx.drawImage(p3,0,0);
+            ctx.drawImage(p4,500-p4.width,0);
+        }
+    </script>
+</body>
+</html>

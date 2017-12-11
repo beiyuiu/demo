@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h3>组件监听</h3>
+    <div id="app">
+        <my-game></my-game>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+       Vue.component("my-game",{
+           template:`
+            <div>
+                <input type="text" v-model="inputNum" @keyup.13="clearNum"/><br/>
+                <p>{{result}}</p>
+            </div>
+           `,
+           beforeMount:function(){
+              this.rnum=Math.floor(Math.random()*100);
+           },
+           data:function(){
+            return {
+               inputNum:0,
+                rnum:0,
+                result:""
+            }
+          },
+           watch:{
+               inputNum:function(){
+                   if(this.inputNum>this.rnum){
+                       this.result="太大";
+                   }else if(this.inputNum<this.rnum){
+                       this.result="太小";
+                   }else{
+                       this.result="congratulation";
+                   }
+               }
+           },
+           methods:{
+               clearNum:function(){
+                   this.inputNum="";
+               }
+           }
+       });
+       var exampleData = {
+           msg:"hello",
+        };
+        var app  = new Vue({
+            el:"#app",
+            data:exampleData,
+        });
+    </script>
+</body>
+</html>

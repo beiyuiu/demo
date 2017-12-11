@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>//鄙视: 仿写bind的实现原理!
+    if(!("bind" in Function.prototype))
+		Function.prototype.bind=function(obj/*args*/){
+			//this->将来调用的bind的原函数
+			return function(/*sals*/){
+				this.apply(obj,arguments)
+			}
+      }
+
+    function calc(base,bonus1,bonus2){
+      document.write(this.ename+"的总工资:"+(
+        base+bonus1+bonus2
+      )+"<br>");
+    }
+    var lilei={ename:"Li Lei"};
+    var hmm={ename:"Han Meimei"};
+    //lilei和hmm共用同一个计算器
+    //lilei临时借用
+    calc.call(lilei,10000,2000,3000);
+    var sals=[4000,7000,6000];
+    //hmm临时借用
+    calc.apply(hmm,sals);
+    //calc( 4000,7000,6000)
+
+    //lilei创建了一个自己专属的lilei_calc
+      //功能和calc一样
+      //提前永久绑定了this->lilei
+      //提前永久绑定了第一个参数base为10000
+    var lilei_calc=calc.bind(lilei,10000);
+    //lilei_calc:function calc(base=10000,...){
+      //this->lilei
+    //}
+    //lilei用自己专属的calc，不用再重复输入
+    lilei_calc(2000,3000);
+    //hmm想临时借用，但借不了
+    lilei_calc.call(hmm,4000,7000,6000);
+  </script>
+ </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="container"></div>
+
+<script type="text/babel">
+      var MyTitle = React.createClass({
+        render:function(){
+            return <h1>{this.props.titleName}</h1>
+        }
+    });
+    var MyPage = React.createClass({
+        render:function(){
+            return <div>
+                <MyTitle titleName="我的订单"></MyTitle>
+                <MyTitle titleName="我的购物车"></MyTitle>
+            </div>
+        }
+    });
+    ReactDOM.render(
+            <MyPage></MyPage>,
+            document.getElementById('container')
+    );
+</script>
+</body>
+</html>

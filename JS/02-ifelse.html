@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<script>
+		function getYear(){
+			var year=prompt("请输入");
+			if((year%4==0 && year%100!=0)||(year%400==0)){
+				console.log("输入年："+year+"为闰年");
+			}else{
+				console.log("输入年："+year+"不是闰年");
+			}
+		}
+	</script>
+	<button onclick="getYear()">判断闰年</button>
+ </body>
+</html>

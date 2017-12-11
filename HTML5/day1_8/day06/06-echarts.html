@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{text-align: center;}
+        div{background: #ddd;}
+    </style>
+</head>
+<body>
+<div id="box" style="width: 600px;height: 400px;"></div>
+<script src="lib/echarts.min.js"></script>
+<script src="jquery.js"></script>
+<script>
+    $.get("data.php",function(data){
+        var option={
+        title:{text:"销售统计数据"},
+        tooltip:{},
+        legend:{data:["数据来源网络"]},
+        xAxis:{data:data.name},
+        yAxis:{},
+        series:[{name:"销售量",type:"bar",data:data.data}]
+    };
+        var myChart = echarts.init(box);
+        myChart.setOption(option);
+    });
+
+</script>
+</body>
+</html>

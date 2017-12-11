@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script>
+"use strict";
+
+function Emp(id,ename,age,salary){
+  this.id=id;
+  this.ename=ename;
+  this.salary=salary;
+  //鄙视: 如何实现类似Java的私有属性和公有属性
+  //私有属性: 仅对象内可用的属性
+  //公有属性: 可用.随意访问的属性
+  var _age=0;//闭包中的_age等效于Java中的私有属性
+  Object.defineProperties(this,{
+    id:{writable:false},
+    salary:{enumerable:false},
+    age:{
+      get(){return _age},
+      set(val){
+        if(val>=18&&val<=65)
+          _age=val;
+        else
+          throw new RangeError("年龄必须介于18~65之间");
+      },
+      enumerable:true,
+      //configurable:false
+    }
+  });
+  this.age=age;//将age交给已经添加的访问器属性age
+
+  //防篡改:
+  //Object.preventExtensions(this);
+  Object.seal(this);
+}
+var eric=new Emp(1001,"Eric",26,12000);
+
+Object.defineProperty(eric,"id",{
+  writable:true,configurable:true
+})
+//eric.id=1002;
+//delete eric.ename;
+//eric._age=-2;
+for(var key in eric){
+  console.log(key+":"+eric[key]);
+}
+  </script>
+ </body>
+</html>

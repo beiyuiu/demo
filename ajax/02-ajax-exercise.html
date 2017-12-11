@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="common.js"></script>
+	<script>
+		function test(){
+			var xhr=createXhr;
+			var uname=$("uname").value;
+			var url="02-ajax-exercise.php?uname="+uname;
+			xhr.open("get",url,true);
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+					var resText=xhr.responseText;
+					$("msg-show").innerHTML=resText;
+				}
+			}
+			xhr.send(null);
+		}
+	</script>
+</head>
+<body>
+	<div id="msg-show"></div>
+	用户名<input type="text" id="uname" onblur="test">
+</body>
+</html>
